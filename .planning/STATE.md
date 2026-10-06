@@ -1,11 +1,27 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+current_phase: 1 — Foundation + Pipeline
+status: executing
+last_updated: "2026-10-06T15:50:26.112Z"
+progress:
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 3
+  completed_plans: 0
+  percent: 0
+---
+
 # State — VetMyc
 
 ## Project Reference
+
 See: .planning/PROJECT.md
 
 **Core value:** All existing content accessible through a clean, modern, navigable interface
 **Current phase:** 1 — Foundation + Pipeline
-**Status:** Not started
+**Status:** Ready to execute
 
 ---
 
@@ -45,16 +61,19 @@ See: .planning/PROJECT.md
 ## Accumulated Context
 
 ### Key Decisions
+
 - Astro `prefixDefaultLocale: false` — Spanish at root, English under `/en/` (must be locked in Phase 1 before any content is committed)
 - Spanish-slug strategy for both language trees — `/en/patologias/levaduras/` not `/en/pathologies/yeasts/`; makes LangSwitcher a one-liner path replace
 - No CI/CD for v1 — build locally, deploy via rsync or FTP to ULPGC Apache server
 - No Tailwind — plain CSS with scoped Astro `<style>` blocks and CSS Custom Properties
 
 ### Open Blockers
+
 - ULPGC webmaster must confirm: `AllowOverride` status, deployment URL (root vs subdirectory), HTTPS enforcement, file permissions — required before finalizing `astro.config.mjs`
 - Astro 4 vs 5 API differences — verify `defineCollection` syntax and `getRelativeLocaleUrl` import path against live docs before coding Phase 1 schemas
 
 ### Todos (carry forward)
+
 - Confirm deployment URL with ULPGC webmaster before writing `astro.config.mjs`
 - Check Astro version at install time; verify Content Collections API (Astro 4) vs Content Layer API (Astro 5)
 - Audit source `.htm` files for FrontPage WebBot artifacts (`<!--webbot-->`, `<!--mstheme-->`, `_msstyle`) before extraction script is written

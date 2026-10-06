@@ -474,27 +474,31 @@ except UnicodeDecodeError as e:
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **ULPGC deployment URL: root vs subdirectory?**
    - What we know: The live site is `micologiaveterinaria.ulpgc.es` — but we do not know if Astro's output lands at the domain root or a subdirectory path.
    - What's unclear: Whether `base:` is needed in `astro.config.mjs`.
    - Recommendation: The planner should add a task "Confirm deployment URL with webmaster before writing astro.config.mjs." This is a blocking dependency for FOUND-03.
+   - **RESOLVED:** Handled in Plan 02 Task 1 (webmaster coordination human checkpoint). `site`/`base` finalized after webmaster confirms root vs subdirectory.
 
 2. **Apache `AllowOverride` status on ULPGC server**
    - What we know: Standard Apache deployment works fine with `build.format: 'directory'` and no `.htaccess` if `DirectoryIndex index.html` is set globally.
    - What's unclear: Whether the developer can place a `.htaccess` file if needed (e.g., for UTF-8 charset headers or clean URL enforcement).
    - Recommendation: The walking skeleton deployment (FOUND-03) will reveal this empirically. Plan the test page deployment as an explicit verification step.
+   - **RESOLVED:** Handled in Plan 02 Task 1 (webmaster coordination checkpoint — one of the six confirmation questions).
 
 3. **Sätteri vs remark for Markdown rendering (Phase 1 scope check)**
    - What we know: Astro 7 defaults to Sätteri. For Phase 1, content is in `.astro` templates (not `.md` files), so the markdown pipeline is not yet relevant.
    - What's unclear: Whether Phase 2 content migration to `.md` files will encounter Sätteri limitations (e.g., custom HTML blocks in migration output).
    - Recommendation: Not a Phase 1 blocker. Flag for Phase 2 research.
+   - **RESOLVED:** Not a Phase 1 blocker. Deferred to Phase 2 research.
 
 4. **`grep -rP "[\x80-\xFF]"` verification semantics**
    - What we know: This grep finds all high bytes, including valid UTF-8 continuation bytes for Spanish characters.
    - What's unclear: Whether the success criterion means "zero bytes in the 0x80-0xFF range" (impossible for Spanish) or "no invalid UTF-8 sequences."
    - Recommendation: The planner should clarify the success criterion. The correct encoding check is Python's strict UTF-8 decode, not raw byte grep. The plan task for FOUND-04 should specify the Python-based verification method.
+   - **RESOLVED:** Python strict codec (`open(encoding='utf-8', errors='strict')` and `TextDecoder('utf-8', { fatal: true })`) used throughout all plans — `verify_utf8.py`, `verify-build.mjs`, `verify-live.mjs`. Rationale documented in `scripts/README.md` (Plan 03 Task 2).
 
 ---
 
