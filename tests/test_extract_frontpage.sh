@@ -16,16 +16,23 @@ OUTPUT_TMP="/tmp/vetmyc_sample_out.md"
 
 echo "=== VetMyc: FrontPage extraction round-trip test ==="
 
-# Step 1: Confirm Python 3 is available
-if ! command -v python3 &>/dev/null; then
+# Step 1: Resolve Python 3 interpreter (prefer venv if present and has bs4)
+PYTHON3=python3
+if [ -f "${REPO_ROOT}/.venv/bin/python3" ]; then
+    if "${REPO_ROOT}/.venv/bin/python3" -c "import bs4" &>/dev/null; then
+        PYTHON3="${REPO_ROOT}/.venv/bin/python3"
+    fi
+fi
+
+if ! command -v "${PYTHON3}" &>/dev/null && ! [ -f "${PYTHON3}" ]; then
     echo "ERROR: python3 not found in PATH" >&2
     exit 1
 fi
-echo "Python 3: $(python3 --version)"
+echo "Python 3: $(${PYTHON3} --version) (${PYTHON3})"
 
 # Step 2: Run the extractor
-echo "Running: python3 ${EXTRACTOR} ${FIXTURE_HTM} ${OUTPUT_TMP}"
-python3 "${EXTRACTOR}" "${FIXTURE_HTM}" "${OUTPUT_TMP}"
+echo "Running: ${PYTHON3} ${EXTRACTOR} ${FIXTURE_HTM} ${OUTPUT_TMP}"
+"${PYTHON3}" "${EXTRACTOR}" "${FIXTURE_HTM}" "${OUTPUT_TMP}"
 
 # Step 3: Diff output against expected (diff -u exits non-zero if files differ)
 echo "Diffing output against expected..."
@@ -37,8 +44,8 @@ fi
 echo "Diff: OK (output matches expected)"
 
 # Step 4: Verify strict UTF-8
-echo "Running: python3 ${VERIFIER} ${OUTPUT_TMP}"
-python3 "${VERIFIER}" "${OUTPUT_TMP}"
+echo "Running: ${PYTHON3} ${VERIFIER} ${OUTPUT_TMP}"
+"${PYTHON3}" "${VERIFIER}" "${OUTPUT_TMP}"
 
 echo ""
 echo "PASS: extraction round-trip is GREEN"
