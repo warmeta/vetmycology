@@ -27,7 +27,11 @@
   2. A test page is reachable at the ULPGC server URL with correct UTF-8 rendering (ñ, á, é display correctly in browser)
   3. The i18n routing configuration (`prefixDefaultLocale`, `defaultLocale`, `locales`) is committed and will not require a rebuild after content migration begins
   4. Developer can pass any FrontPage `.htm` file through the extraction script and receive a UTF-8 Markdown file with no encoding artifacts (verified by `grep -rP "[\x80-\xFF]"` returning zero)
-**Plans:** TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Astro 7 + lock i18n + Spanish/English test pages build locally (Walking Skeleton core; FOUND-01, FOUND-02)
+- [ ] 01-02-PLAN.md — Webmaster coordination + deploy test pages to ULPGC Apache + verify UTF-8 live (FOUND-03)
+- [ ] 01-03-PLAN.md — FrontPage ISO-8859-1 to UTF-8 Markdown extraction script with strict UTF-8 verifier and fixture round-trip test (FOUND-04)
 
 ### Phase 2: Spanish Content Migration
 **Goal:** All 14 content sections are live in Spanish with a complete, responsive layout — navigation, media, and accessibility baseline all in place
@@ -72,7 +76,7 @@
 
 | Phase | Name | Plans Complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
-| 1 | Foundation + Pipeline | 0/? | Not started | — |
+| 1 | Foundation + Pipeline | 0/3 | Not started | — |
 | 2 | Spanish Content Migration | 0/? | Not started | — |
 | 3 | English + i18n | 0/? | Not started | — |
 | 4 | Polish + Launch | 0/? | Not started | — |
