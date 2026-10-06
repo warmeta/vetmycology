@@ -30,11 +30,11 @@
   3. The i18n routing configuration (`prefixDefaultLocale`, `defaultLocale`, `locales`) is committed and will not require a rebuild after content migration begins
   4. Developer can pass any FrontPage `.htm` file through the extraction script and receive a UTF-8 Markdown file with no encoding artifacts (verified by `grep -rP "[\x80-\xFF]"` returning zero)
 
-**Plans:** 3 plans
+**Plans:** 1/3 plans executed
 Plans:
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — Scaffold Astro 7 + lock i18n + Spanish/English test pages build locally (Walking Skeleton core; FOUND-01, FOUND-02)
+- [x] 01-01-PLAN.md — Scaffold Astro 7 + lock i18n + Spanish/English test pages build locally (Walking Skeleton core; FOUND-01, FOUND-02)
 - [ ] 01-03-PLAN.md — FrontPage ISO-8859-1 to UTF-8 Markdown extraction script with strict UTF-8 verifier and fixture round-trip test (FOUND-04)
 
 **Wave 2** *(blocked on Wave 1 completion)*
@@ -93,7 +93,7 @@ Plans:
 
 | Phase | Name | Plans Complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
-| 1 | Foundation + Pipeline | 0/3 | Not started | — |
+| 1 | Foundation + Pipeline | 1/3 | In Progress|  |
 | 2 | Spanish Content Migration | 0/? | Not started | — |
 | 3 | English + i18n | 0/? | Not started | — |
 | 4 | Polish + Launch | 0/? | Not started | — |
