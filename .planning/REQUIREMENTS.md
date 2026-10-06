@@ -88,23 +88,37 @@
 
 | Req ID | Phase | Status |
 |--------|-------|--------|
-| FOUND-01 | — | Pending |
-| FOUND-02 | — | Pending |
-| FOUND-03 | — | Pending |
-| FOUND-04 | — | Pending |
-| FOUND-05 | — | Pending |
-| NAV-01 | — | Pending |
-| NAV-02 | — | Pending |
-| NAV-03 | — | Pending |
-| NAV-04 | — | Pending |
-| NAV-05 | — | Pending |
-| CONT-01–15 | — | Pending |
-| MEDIA-01 | — | Pending |
-| MEDIA-02 | — | Pending |
-| MEDIA-03 | — | Pending |
-| MEDIA-04 | — | Pending |
-| I18N-01 | — | Pending |
-| I18N-02 | — | Pending |
-| I18N-03 | — | Pending |
-| I18N-04 | — | Pending |
-| I18N-05 | — | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 4 | Pending |
+| NAV-01 | Phase 2 | Pending |
+| NAV-02 | Phase 2 | Pending |
+| NAV-03 | Phase 3 | Pending |
+| NAV-04 | Phase 2 | Pending |
+| NAV-05 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Pending |
+| CONT-07 | Phase 2 | Pending |
+| CONT-08 | Phase 2 | Pending |
+| CONT-09 | Phase 2 | Pending |
+| CONT-10 | Phase 2 | Pending |
+| CONT-11 | Phase 2 | Pending |
+| CONT-12 | Phase 2 | Pending |
+| CONT-13 | Phase 2 | Pending |
+| CONT-14 | Phase 2 | Pending |
+| CONT-15 | Phase 2 | Pending |
+| MEDIA-01 | Phase 2 | Pending |
+| MEDIA-02 | Phase 2 | Pending |
+| MEDIA-03 | Phase 2 | Pending |
+| MEDIA-04 | Phase 2 | Pending |
+| I18N-01 | Phase 3 | Pending |
+| I18N-02 | Phase 3 | Pending |
+| I18N-03 | Phase 3 | Pending |
+| I18N-04 | Phase 3 | Pending |
+| I18N-05 | Phase 4 | Pending |
