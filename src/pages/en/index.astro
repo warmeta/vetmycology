@@ -1,0 +1,47 @@
+---
+// src/pages/en/index.astro — English page at /en/ (prefixDefaultLocale: false, en under /en/)
+const pageTitle = 'Veterinary Mycology — Walking Skeleton';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <main>
+      <h1>Veterinary Mycology — walking skeleton</h1>
+      <p>
+        This is the walking skeleton test page for the ULPGC Veterinary Mycology Group website.
+        It confirms that the build pipeline produces valid UTF-8 HTML with Spanish special
+        characters (ñ, á, é, ü) rendered correctly, and that the English route resolves at
+        <code>/en/</code>.
+      </p>
+      <p>
+        The full site will include 14 content sections covering veterinary mycology, fungal
+        pathologies, laboratory diagnostics, and specialist bibliography.
+      </p>
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+</style>
