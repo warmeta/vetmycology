@@ -13,7 +13,7 @@
 - [x] **FOUND-01**: Developer can run `npm create astro@latest`, configure TypeScript strict mode, set `output: 'static'`, and get a clean build pipeline
 - [x] **FOUND-02**: `astro.config.mjs` has i18n routing locked (defaultLocale, locales, prefixDefaultLocale) before any content pages are created
 - [ ] **FOUND-03**: A test page deployed to the ULPGC Apache server confirms DirectoryIndex, file permissions, and UTF-8 encoding all work correctly end-to-end
-- [ ] **FOUND-04**: Developer has a script or documented procedure to convert FrontPage ISO-8859-1 `.htm` files to clean UTF-8 Markdown (handles entity decoding, tag stripping, `&nbsp;` removal, WebBot comment stripping)
+- [x] **FOUND-04**: Developer has a script or documented procedure to convert FrontPage ISO-8859-1 `.htm` files to clean UTF-8 Markdown (handles entity decoding, tag stripping, `&nbsp;` removal, WebBot comment stripping)
 - [ ] **FOUND-05**: Every page has a skip-to-content link, `<html lang>` matching its locale, semantic landmark elements (`<main>`, `<nav>`, `<footer>`), and a logical `<h1>` → `<h2>` → `<h3>` heading hierarchy — meeting WCAG 2.1 AA as required by Real Decreto 1112/2018
 
 ### Navigation & Layout
@@ -91,7 +91,7 @@
 | FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Complete |
 | FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 4 | Pending |
 | NAV-01 | Phase 2 | Pending |
 | NAV-02 | Phase 2 | Pending |

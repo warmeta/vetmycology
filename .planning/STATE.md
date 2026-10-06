@@ -4,14 +4,14 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 01
 status: executing
-stopped_at: Plan 01-01 complete
-last_updated: "2026-10-06T16:07:23.004Z"
+stopped_at: Plan 01-03 complete
+last_updated: "2026-10-06T17:40:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 0
+  completed_plans: 3
+  percent: 67
 ---
 
 # State — VetMyc
@@ -22,7 +22,7 @@ See: .planning/PROJECT.md
 
 **Core value:** All existing content accessible through a clean, modern, navigable interface
 **Current phase:** 01
-**Status:** Executing Plan 02 of Phase 01
+**Status:** Plan 01-03 complete — FOUND-04 satisfied
 
 ---
 
@@ -30,19 +30,19 @@ See: .planning/PROJECT.md
 
 | Phase | Name | Status |
 |-------|------|--------|
-| 1 | Foundation + Pipeline | Executing (1/3 plans complete) |
+| 1 | Foundation + Pipeline | Executing (3/3 plans complete — awaiting Plan 02 checkpoint) |
 | 2 | Spanish Content Migration | Not started |
 | 3 | English + i18n | Not started |
 | 4 | Polish + Launch | Not started |
 
-**Progress:** [███░░░░░░░] 33%
+**Progress:** [███████░░░] 67%
 
 ---
 
 ## Current Position
 
 Phase: 01 (foundation-pipeline) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 **Active phase:** 1 — Foundation + Pipeline  
 **Active plan:** None  
 **Active task:** None  
@@ -61,6 +61,7 @@ Plan: 2 of 3
 
 ---
 | Phase 01-foundation-pipeline P01 | 4 | 3 tasks | 11 files |
+| Phase 01-foundation-pipeline P03 | 25 | - tasks | - files |
 
 ## Accumulated Context
 
@@ -75,6 +76,8 @@ Plan: 2 of 3
 - `base` NOT set in astro.config.mjs — pending ULPGC webmaster confirmation of root vs subdirectory (handled in Plan 02)
 - `src/content.config.ts` at src/ root (NOT src/content/config.ts) — Astro 7 Content Layer API with glob() loader
 - `z` imported from `astro/zod` (NOT `astro:content`) — Astro 6+ requirement
+- Use `.*?` with `re.DOTALL` for webbot/mstheme/mstable regex in extract_frontpage.py — `[^>]*` from RESEARCH.md Pattern 6 fails when WebBot comment contains `>` inside body (Pitfall 5 confirmed by fixture)
+- venv resolution in test_extract_frontpage.sh: prefer `.venv/bin/python3` when bs4 is present — dev machine pip3→Python 3.11 but python3→Python 3.12 (Homebrew version split)
 
 ### Open Blockers
 
@@ -83,12 +86,12 @@ Plan: 2 of 3
 ### Todos (carry forward)
 
 - Confirm deployment URL with ULPGC webmaster — Plan 02 Task 1 handles this as a human checkpoint
-- Audit source `.htm` files for FrontPage WebBot artifacts (`<!--webbot-->`, `<!--mstheme-->`, `_msstyle`) before extraction script is written (Plan 03)
+- ~~Audit source `.htm` files for FrontPage WebBot artifacts before extraction script is written (Plan 03)~~ — DONE: extraction script written and tested, FOUND-04 complete
 
 ---
 
 ## Session Continuity
 
-**Last session:** 2026-10-06T16:07:23.000Z
-**Stopped at:** Plan 01-01 complete
+**Last session:** 2026-10-06T17:40:00.000Z
+**Stopped at:** Plan 01-03 complete — FOUND-04 extraction pipeline GREEN
 **Next action:** Execute Plan 01-02 (ULPGC deploy — webmaster coordination checkpoint)
