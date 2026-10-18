@@ -4,7 +4,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://micologiaveterinaria.ulpgc.es', // confirm URL with webmaster; use subdirectory base if needed
+  site: 'https://micologiaveterinaria.ulpgc.es', // confirmed with webmaster: root domain, no base needed
   output: 'static',
   i18n: {
     defaultLocale: 'es',
