@@ -1,15 +1,120 @@
 ---
-// src/pages/index.astro — Home page (Phase 2 Wave 1 placeholder)
-// Full home content (hero, logos, Dr. Begoña, 3 photos) is Plan 03 Task 1.
-// This version provides BaseLayout shell for header/footer Wave 1 verification.
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = 'Grupo de Micología Veterinaria · ULPGC';
+const pageDescription = 'Grupo de investigación en micología veterinaria de la Facultad de Veterinaria de la Universidad de Las Palmas de Gran Canaria.';
 ---
 
-<BaseLayout title={pageTitle} description="Sitio web del Grupo de Micología Veterinaria de la ULPGC, Facultad de Veterinaria.">
-  <main id="main-content" style="max-width: 740px; margin: 0 auto; padding: var(--space-xl) var(--space-lg);">
-    <h1>Grupo de Micología Veterinaria</h1>
-    <p>Página en construcción. El contenido completo estará disponible en breve.</p>
-    <p lang="es">Micología Veterinaria — ñoño, cándida, pérez</p>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="home-main">
+    <section class="hero">
+      <h1>GRUPO DE MICOLOGÍA VETERINARIA</h1>
+      <p class="hero-affiliation">Facultad de Veterinaria · Universidad de Las Palmas de Gran Canaria</p>
+    </section>
+
+    <section class="institutional-logos">
+      <img src="/images/logos/ulpgc.png" alt="Universidad de Las Palmas de Gran Canaria" />
+      <img src="/images/logos/iusa.png" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
+    </section>
+
+    <section class="director">
+      <p>Dirigido por <a href="/docs/cv-begona-acosta.pdf">Dra. Begoña Acosta Hernández</a></p>
+    </section>
+
+    <section class="photo-strip">
+      <img src="/images/home/microscopy-1.jpg" alt="Fotografía científica del grupo de micología veterinaria" />
+      <img src="/images/home/culture-2.jpg" alt="Cultivo de hongos patógenos en laboratorio" />
+      <img src="/images/home/pathology-3.jpg" alt="Patología por hongos en animales" />
+    </section>
+
+    <p class="visually-hidden" lang="es">Micología Veterinaria — ñoño, cándida, pérez</p>
   </main>
 </BaseLayout>
+
+<style>
+  .home-main {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+  }
+
+  .hero {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  @media (max-width: 767px) {
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .hero-affiliation {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+  }
+
+  .institutional-logos {
+    display: flex;
+    gap: var(--space-xl);
+    justify-content: center;
+    align-items: center;
+    margin: var(--space-xl) 0;
+  }
+
+  .institutional-logos img {
+    max-height: 80px;
+    width: auto;
+  }
+
+  .director {
+    text-align: center;
+    margin: var(--space-xl) auto;
+    max-width: 740px;
+  }
+
+  .director a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .photo-strip {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .photo-strip img {
+    flex: 1;
+    max-width: 33%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  @media (max-width: 767px) {
+    .photo-strip {
+      flex-direction: column;
+    }
+
+    .photo-strip img {
+      max-width: 100%;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
