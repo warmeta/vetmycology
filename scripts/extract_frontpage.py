@@ -9,9 +9,15 @@ Pipeline (Pattern 6 from 01-RESEARCH.md):
   1. Read bytes, decode iso-8859-1
   2. Regex-strip webbot/mstheme/mstable comments and _msstyle attrs BEFORE parsing
      (load-bearing ordering — Pitfall 5: WebBot comments can contain > inside body)
+  2.5. Regex-strip OOXML/VML conditional blocks (<![if ...]>...</![endif]>) BEFORE parsing
+     (Pitfall 6: these survive BeautifulSoup and pollute extracted text)
   3. BeautifulSoup parse with html.parser
   4. Strip remaining Comment nodes
-  5. Decompose script, style, font, frameset, frame tags
+  5a. Decompose script, style, frameset, frame tags (removes element AND content — safe,
+      these tags contain no visible content worth preserving)
+  5b. Unwrap font tags (removes wrapper element, PRESERVES text children — critical fix for
+      Pitfall 1: FrontPage wraps nearly all visible text in <font color="..." face="...">;
+      decompose() would silently delete all content)
   6. Extract body content, html.unescape() entities
   7. markdownify with heading_style='ATX', bullets='-'
   8. Replace U+00A0 with regular space, collapse 3+ blank lines
@@ -42,6 +48,11 @@ def extract(input_path: Path, output_path: Path) -> None:
     text = re.sub(r'<!--mstable.*?-->', '', text, flags=re.IGNORECASE | re.DOTALL)
     text = re.sub(r'class="_msstyle[^"]*"', '', text, flags=re.IGNORECASE)
 
+    # Step 2.5: Strip OOXML/VML conditional blocks BEFORE parsing (Pitfall 6).
+    # FrontPage/Word HTML uses <![if !mso]>...</![endif]> constructs for Office-specific
+    # formatting that BeautifulSoup cannot reliably parse out later.
+    text = re.sub(r'<!\[if[^\]]*\]>(.*?)<!\[endif\]>', '', text, flags=re.IGNORECASE | re.DOTALL)
+
     # Step 3: Parse with BeautifulSoup using html.parser (stdlib — no lxml dependency)
     soup = BeautifulSoup(text, 'html.parser')
 
@@ -49,9 +60,16 @@ def extract(input_path: Path, output_path: Path) -> None:
     for comment in soup.find_all(string=lambda t: isinstance(t, Comment)):
         comment.extract()
 
-    # Step 5: Decompose layout/style cruft tags
-    for tag in soup.find_all(['script', 'style', 'font', 'frameset', 'frame']):
+    # Step 5a: Decompose layout/style cruft tags (removes element AND content — safe because
+    # these tags contain no visible text worth preserving).
+    for tag in soup.find_all(['script', 'style', 'frameset', 'frame']):
         tag.decompose()
+
+    # Step 5b: Unwrap <font> tags — removes the wrapper element but PRESERVES text children.
+    # FrontPage wraps nearly all visible text in <font color="..." face="..."> elements.
+    # Using decompose() here (the old bug) silently deleted all content (Pitfall 1).
+    for tag in soup.find_all('font'):
+        tag.unwrap()
 
     # Step 6: Extract body (fall back to full soup if no body element)
     body = soup.find('body') or soup
