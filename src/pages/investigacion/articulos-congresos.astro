@@ -1,0 +1,19 @@
+---
+// src/pages/investigacion/articulos-congresos.astro
+// Artículos y Congresos — no TOC (long list of citations, toc: false)
+// Source: 02-RESEARCH.md Pattern 2 (Astro 7 Content Rendering)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../layouts/ContentPage.astro';
+
+const entry = await getEntry('investigacion', 'articulos-congresos');
+if (!entry) throw new Error('Entry not found: investigacion/articulos-congresos');
+
+const { Content } = await render(entry);
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  lang={entry.data.lang}
+>
+  <Content />
+</ContentPage>

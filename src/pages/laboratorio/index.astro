@@ -1,0 +1,20 @@
+---
+// src/pages/laboratorio/index.astro
+// Laboratorio de Diagnóstico Micológico — no TOC (toc: false)
+// Note: index.astro at directory-level so URL is /laboratorio/ (not /laboratorio)
+// Source: 02-RESEARCH.md Pattern 2 (Astro 7 Content Rendering)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../layouts/ContentPage.astro';
+
+const entry = await getEntry('laboratorio', 'laboratorio');
+if (!entry) throw new Error('Entry not found: laboratorio/laboratorio');
+
+const { Content } = await render(entry);
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  lang={entry.data.lang}
+>
+  <Content />
+</ContentPage>

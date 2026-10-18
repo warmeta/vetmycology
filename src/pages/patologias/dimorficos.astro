@@ -1,0 +1,30 @@
+---
+// src/pages/patologias/dimorficos.astro
+// Patologías por Hongos Dimórficos — with TableOfContents (toc: true)
+// Source: 02-RESEARCH.md Pattern 2 (Astro 7 Content Rendering), Pattern 7 (TOC)
+// tocItems IDs verified against Sätteri-generated slugs
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias', 'dimorficos');
+if (!entry) throw new Error('Entry not found: patologias/dimorficos');
+
+const { Content } = await render(entry);
+
+// IDs are Sätteri auto-generated kebab-case slugs from h2 text
+// "Histoplasmosis" → "histoplasmosis"
+// "Esporotricosis" → "esporotricosis"
+const tocItems = [
+  { id: 'histoplasmosis', label: 'Histoplasmosis' },
+  { id: 'esporotricosis', label: 'Esporotricosis' },
+];
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  toc={true}
+  tocItems={tocItems}
+  lang={entry.data.lang}
+>
+  <Content />
+</ContentPage>

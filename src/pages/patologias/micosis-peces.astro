@@ -1,0 +1,19 @@
+---
+// src/pages/patologias/micosis-peces.astro
+// Principales Enfermedades Fúngicas en Peces — no TOC (single topic, toc: false)
+// Source: 02-RESEARCH.md Pattern 2 (Astro 7 Content Rendering)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias', 'micosis-peces');
+if (!entry) throw new Error('Entry not found: patologias/micosis-peces');
+
+const { Content } = await render(entry);
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  lang={entry.data.lang}
+>
+  <Content />
+</ContentPage>

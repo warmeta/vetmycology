@@ -1,0 +1,34 @@
+---
+// src/pages/patologias/levaduras.astro
+// Patologías por Levaduras — with TableOfContents (toc: true)
+// Source: 02-RESEARCH.md Pattern 2 (Astro 7 Content Rendering), Pattern 7 (TOC)
+// tocItems IDs verified against Sätteri-generated slugs from dist/patologias/levaduras/index.html
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias', 'levaduras');
+if (!entry) throw new Error('Entry not found: patologias/levaduras');
+
+const { Content } = await render(entry);
+
+// IDs are Sätteri auto-generated kebab-case slugs from h2 text (Pitfall 2 — do NOT add {#id} to markdown)
+// IMPORTANT: Sätteri preserves accented characters in IDs (does NOT ASCII-fold)
+// Verified by inspecting dist/patologias/levaduras/index.html after build:
+// "Candidiasis animal" → "candidiasis-animal"
+// "Criptococosis" → "criptococosis"
+// "Patologías por Malassezias" → "patologías-por-malassezias" (accent preserved — NOT patologias)
+const tocItems = [
+  { id: 'candidiasis-animal', label: 'Candidiasis animal' },
+  { id: 'criptococosis', label: 'Criptococosis' },
+  { id: 'patologías-por-malassezias', label: 'Patologías por Malassezias' },
+];
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  toc={true}
+  tocItems={tocItems}
+  lang={entry.data.lang}
+>
+  <Content />
+</ContentPage>
