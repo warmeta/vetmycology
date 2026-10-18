@@ -1,0 +1,37 @@
+---
+// src/layouts/BaseLayout.astro
+// HTML shell with Google Fonts preconnect+stylesheet, global.css import, Header + slot + Footer.
+// Source: 02-UI-SPEC.md BaseLayout Component Contract + RESEARCH.md Pattern 3
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang?: 'es' | 'en';
+}
+
+const { title, description, lang = 'es' } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Source+Serif+4:wght@700&display=swap"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

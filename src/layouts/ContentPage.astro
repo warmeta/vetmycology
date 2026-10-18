@@ -1,0 +1,100 @@
+---
+// src/layouts/ContentPage.astro
+// 740px prose column wrapper around BaseLayout; renders TableOfContents when toc=true.
+// Source: 02-UI-SPEC.md ContentPage Layout Contract + RESEARCH.md Pitfall 3 (:global() for prose)
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  toc?: boolean;
+  tocItems?: Array<{ id: string; label: string }>;
+  lang?: 'es' | 'en';
+}
+
+const { title, description, toc = false, tocItems = [], lang = 'es' } = Astro.props;
+---
+<BaseLayout title={title} description={description} lang={lang}>
+  <main id="main-content">
+    <article class="content-page">
+      <h1>{title}</h1>
+      {toc && tocItems.length > 0 && <TableOfContents items={tocItems} />}
+      <slot />
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: var(--space-3xl) var(--space-lg);
+  }
+
+  /* Mobile: reduce vertical padding */
+  @media (max-width: 767px) {
+    .content-page {
+      padding: var(--space-xl) var(--space-md);
+    }
+  }
+
+  /* Prose styles — MUST use :global() to reach markdown-rendered children (Pitfall 3) */
+  /* Markdown-rendered HTML is outside Astro's component scope and won't receive scoped attrs */
+
+  .content-page :global(h1) {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+  }
+
+  .content-page :global(h2) {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .content-page :global(h3) {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  .content-page :global(p) {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .content-page :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .content-page :global(a:visited) {
+    color: #3d8a68;
+  }
+
+  .content-page :global(ul),
+  .content-page :global(ol) {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-xl);
+  }
+
+  .content-page :global(li) {
+    margin-bottom: var(--space-sm);
+  }
+</style>

@@ -2,18 +2,42 @@
 // NOTE: This file must be at src/content.config.ts (Astro 6+ location).
 //       Do NOT use src/content/config.ts — that is the Astro 4 path which silently
 //       produces no collections in Astro 6+.
-// Source: https://docs.astro.build/en/guides/content-collections/
+// Source: RESEARCH.md Pattern 1 + 02-UI-SPEC.md URL + Slug Map
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod'; // Astro 6+ imports z from astro/zod, NOT astro:content
 
-const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    locale: z.enum(['es', 'en']).default('es'),
-  }),
+// Shared schema for all content collections
+const contentSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  toc: z.boolean().default(false),
+  lang: z.enum(['es', 'en']).default('es'),
 });
 
-export const collections = { pages };
+const micologia = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/micologia' }),
+  schema: contentSchema,
+});
+
+const patologias = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/patologias' }),
+  schema: contentSchema,
+});
+
+const investigacion = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/investigacion' }),
+  schema: contentSchema,
+});
+
+const laboratorio = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/laboratorio' }),
+  schema: contentSchema,
+});
+
+const recursos = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/recursos' }),
+  schema: contentSchema,
+});
+
+export const collections = { micologia, patologias, investigacion, laboratorio, recursos };
