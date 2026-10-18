@@ -1,0 +1,202 @@
+---
+// src/components/MobileNav.astro
+// Full-screen overlay nav with hidden checkbox + <details>/<summary> accordions (no JavaScript).
+// Source: 02-UI-SPEC.md Mobile nav CSS pattern (D-08) + RESEARCH.md Pattern 5
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavGroup {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navGroups: NavGroup[] = [
+  {
+    label: 'Inicio',
+    href: '/',
+  },
+  {
+    label: 'Micología',
+    children: [
+      { label: 'Generalidades de los hongos', href: '/micologia/generalidades/' },
+      { label: 'Grupo de trabajo', href: '/micologia/grupo-de-trabajo/' },
+      { label: 'Colaboración con reptiles', href: '/micologia/colreptiles/' },
+    ],
+  },
+  {
+    label: 'Patologías',
+    children: [
+      { label: 'Levaduras', href: '/patologias/levaduras/' },
+      { label: 'Filamentosos', href: '/patologias/filamentosos/' },
+      { label: 'Dimórficos', href: '/patologias/dimorficos/' },
+      { label: 'Micosis peces', href: '/patologias/micosis-peces/' },
+    ],
+  },
+  {
+    label: 'Investigación',
+    children: [
+      { label: 'Artículos y congresos', href: '/investigacion/articulos-congresos/' },
+      { label: 'Artículos interesantes', href: '/investigacion/articulos-interesantes/' },
+    ],
+  },
+  {
+    label: 'Laboratorio',
+    href: '/laboratorio/',
+  },
+  {
+    label: 'Recursos',
+    children: [
+      { label: 'Archivo de imágenes', href: '/recursos/archivo-imagenes/' },
+      { label: 'Links micología', href: '/recursos/links-micologia/' },
+      { label: 'Links revistas', href: '/recursos/links-revistas/' },
+      { label: 'Bibliografía', href: '/recursos/bibliografia/' },
+    ],
+  },
+];
+---
+
+<!-- Hidden checkbox — the toggle state lives in the DOM, no JS needed -->
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input" />
+
+<!-- Hamburger button label (clicking toggles checkbox) -->
+<label for="nav-toggle" class="nav-hamburger" aria-label="Abrir menú de navegación">
+  ☰
+</label>
+
+<!-- Full-screen overlay — shown when #nav-toggle:checked via sibling combinator -->
+<div class="mobile-nav-overlay">
+  <label for="nav-toggle" class="nav-close" aria-label="Cerrar menú de navegación">
+    ✕
+  </label>
+  <nav>
+    {navGroups.map(group => (
+      group.children ? (
+        <details>
+          <summary>{group.label}</summary>
+          <ul>
+            {group.children.map(child => (
+              <li><a href={child.href}>{child.label}</a></li>
+            ))}
+          </ul>
+        </details>
+      ) : (
+        <a href={group.href}>{group.label}</a>
+      )
+    ))}
+  </nav>
+</div>
+
+<style>
+  /* Known limitation (Pitfall 5): :checked persists through viewport resize.
+     Edge-case only; Phase 4 may add a JS reset if needed. */
+
+  /* Hide the actual checkbox — state is managed by the browser */
+  .nav-toggle-input {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: none;
+    cursor: pointer;
+    color: var(--color-nav-text);
+    font-size: 1.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--color-nav-bg);
+    z-index: 300;
+    flex-direction: column;
+    padding: var(--space-lg);
+    color: var(--color-nav-text);
+    overflow-y: auto;
+  }
+
+  /* Show overlay when checkbox is checked */
+  #nav-toggle:checked ~ .mobile-nav-overlay {
+    display: flex;
+  }
+
+  .nav-close {
+    align-self: flex-end;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-nav-text);
+    margin-bottom: var(--space-md);
+  }
+
+  .mobile-nav-overlay nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .mobile-nav-overlay a {
+    color: var(--color-nav-text);
+    text-decoration: none;
+    display: block;
+    padding: var(--space-sm) 0;
+    min-height: 44px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-nav-overlay details {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .mobile-nav-overlay summary {
+    color: var(--color-nav-text);
+    padding: var(--space-sm) 0;
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+  }
+
+  .mobile-nav-overlay ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--space-md);
+  }
+
+  .mobile-nav-overlay ul li a {
+    font-size: var(--font-size-sm);
+    min-height: 44px;
+  }
+
+  /* Desktop: hide hamburger; mobile overlay forced hidden even if :checked persists */
+  @media (min-width: 1024px) {
+    .nav-hamburger {
+      display: none !important;
+    }
+    .mobile-nav-overlay {
+      display: none !important;
+    }
+  }
+
+  /* Mobile: show hamburger */
+  @media (max-width: 1023px) {
+    .nav-hamburger {
+      display: flex;
+    }
+  }
+</style>

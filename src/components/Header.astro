@@ -1,7 +1,88 @@
 ---
-// src/components/Header.astro — STUB for Task 1 (full implementation in Task 2)
-// Replaced by full implementation in Task 2 of Plan 02-02.
+// src/components/Header.astro
+// Sticky header with logo-left/nav-right (desktop), logo+hamburger (mobile), skip link.
+// Source: 02-UI-SPEC.md Header + Navigation Contract (D-09) + Copywriting Contract
+import TopNav from './TopNav.astro';
+import MobileNav from './MobileNav.astro';
 ---
-<header>
-  <slot />
+
+<!-- Skip link — first child; visually hidden until focused (WCAG 2.4.1) -->
+<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-wordmark">Grupo de Micología Veterinaria · ULPGC</a>
+    <div class="header-right">
+      <TopNav />
+      <MobileNav />
+      <span class="lang-switcher" aria-label="Idioma: Español">ES</span>
+    </div>
+  </div>
 </header>
+
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    background: var(--color-accent);
+    color: #000;
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    z-index: 999;
+  }
+
+  .site-header {
+    background: var(--color-nav-bg);
+    color: var(--color-nav-text);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--space-lg);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-wordmark {
+    color: var(--color-nav-text);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .lang-switcher {
+    color: var(--color-nav-text);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-body);
+  }
+</style>

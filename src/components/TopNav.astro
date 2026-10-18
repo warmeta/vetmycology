@@ -1,0 +1,154 @@
+---
+// src/components/TopNav.astro
+// 6-cluster desktop nav with CSS :hover + :focus-within dropdowns (no JavaScript).
+// Source: 02-UI-SPEC.md Header + Navigation Contract (D-06, D-07) + RESEARCH.md Pattern 4
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavGroup {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navGroups: NavGroup[] = [
+  {
+    label: 'Inicio',
+    href: '/',
+  },
+  {
+    label: 'Micología',
+    children: [
+      { label: 'Generalidades de los hongos', href: '/micologia/generalidades/' },
+      { label: 'Grupo de trabajo', href: '/micologia/grupo-de-trabajo/' },
+      { label: 'Colaboración con reptiles', href: '/micologia/colreptiles/' },
+    ],
+  },
+  {
+    label: 'Patologías',
+    children: [
+      { label: 'Levaduras', href: '/patologias/levaduras/' },
+      { label: 'Filamentosos', href: '/patologias/filamentosos/' },
+      { label: 'Dimórficos', href: '/patologias/dimorficos/' },
+      { label: 'Micosis peces', href: '/patologias/micosis-peces/' },
+    ],
+  },
+  {
+    label: 'Investigación',
+    children: [
+      { label: 'Artículos y congresos', href: '/investigacion/articulos-congresos/' },
+      { label: 'Artículos interesantes', href: '/investigacion/articulos-interesantes/' },
+    ],
+  },
+  {
+    label: 'Laboratorio',
+    href: '/laboratorio/',
+  },
+  {
+    label: 'Recursos',
+    children: [
+      { label: 'Archivo de imágenes', href: '/recursos/archivo-imagenes/' },
+      { label: 'Links micología', href: '/recursos/links-micologia/' },
+      { label: 'Links revistas', href: '/recursos/links-revistas/' },
+      { label: 'Bibliografía', href: '/recursos/bibliografia/' },
+    ],
+  },
+];
+---
+<nav class="top-nav" aria-label="Navegación principal">
+  <ul>
+    {navGroups.map(group => (
+      <li class="nav-group">
+        {group.children ? (
+          <>
+            <a class="nav-group-label" href={group.children[0].href}>{group.label}</a>
+            <ul class="nav-dropdown">
+              {group.children.map(child => (
+                <li>
+                  <a href={child.href}>{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <a class="nav-group-label" href={group.href}>{group.label}</a>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .top-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 56px;
+  }
+
+  .nav-group {
+    position: relative;
+  }
+
+  .nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-nav-bg);
+    min-width: 220px;
+    z-index: 200;
+    border-top: 2px solid var(--color-accent);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Keyboard accessible: :focus-within catches Tab into dropdown links */
+  .nav-group:hover .nav-dropdown,
+  .nav-group:focus-within .nav-dropdown {
+    display: block;
+  }
+
+  .nav-group-label {
+    color: var(--color-nav-text);
+    padding: 0 var(--space-md);
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-left: 4px solid transparent;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    white-space: nowrap;
+  }
+
+  .nav-group:hover .nav-group-label,
+  .nav-group:focus-within .nav-group-label {
+    border-left-color: var(--color-accent);
+  }
+
+  .nav-dropdown a {
+    color: var(--color-nav-text);
+    padding: var(--space-sm) var(--space-md);
+    display: block;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    white-space: nowrap;
+  }
+
+  .nav-dropdown a:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Hide on mobile — MobileNav handles mobile viewport */
+  @media (max-width: 1023px) {
+    .top-nav {
+      display: none;
+    }
+  }
+</style>

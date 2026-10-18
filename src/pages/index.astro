@@ -1,46 +1,15 @@
 ---
-// src/pages/index.astro — Spanish root page (defaultLocale: 'es', no URL prefix)
-const pageTitle = 'Micología Veterinaria — Esqueleto de prueba';
+// src/pages/index.astro — Home page (Phase 2 Wave 1 placeholder)
+// Full home content (hero, logos, Dr. Begoña, 3 photos) is Plan 03 Task 1.
+// This version provides BaseLayout shell for header/footer Wave 1 verification.
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = 'Grupo de Micología Veterinaria · ULPGC';
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <main>
-      <h1>Micología Veterinaria — ñoño, cándida, pérez</h1>
-      <p>
-        Esta es la página de prueba del esqueleto funcional (walking skeleton) del sitio web del
-        Grupo de Micología Veterinaria de la ULPGC. La página confirma que el sistema de
-        construcción produce HTML UTF-8 válido con caracteres especiales españoles: ñ, á, é, ü.
-      </p>
-      <p>
-        El sitio completo incluirá 14 secciones de contenido sobre micología veterinaria,
-        patologías por hongos, diagnóstico de laboratorio y bibliografía especializada.
-      </p>
-    </main>
-  </body>
-</html>
-
-<style>
-  body {
-    font-family:
-      system-ui,
-      -apple-system,
-      sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    line-height: 1.6;
-    color: #1a1a1a;
-  }
-
-  h1 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-  }
-</style>
+<BaseLayout title={pageTitle} description="Sitio web del Grupo de Micología Veterinaria de la ULPGC, Facultad de Veterinaria.">
+  <main id="main-content" style="max-width: 740px; margin: 0 auto; padding: var(--space-xl) var(--space-lg);">
+    <h1>Grupo de Micología Veterinaria</h1>
+    <p>Página en construcción. El contenido completo estará disponible en breve.</p>
+    <p lang="es">Micología Veterinaria — ñoño, cándida, pérez</p>
+  </main>
+</BaseLayout>
