@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 01
+current_phase: 02
 status: executing
-stopped_at: Plan 01-03 complete
-last_updated: "2026-10-06T17:40:00.000Z"
+stopped_at: "Phase 02 Plan 01 complete (2026-10-18)"
+last_updated: "2026-10-18T18:10:00.000Z"
 progress:
   total_phases: 4
-  completed_phases: 0
-  total_plans: 3
-  completed_plans: 3
-  percent: 67
+  completed_phases: 1
+  total_plans: 8
+  completed_plans: 4
+  percent: 37
 ---
 
 # State — VetMyc
@@ -30,23 +30,23 @@ See: .planning/PROJECT.md
 
 | Phase | Name | Status |
 |-------|------|--------|
-| 1 | Foundation + Pipeline | Executing (3/3 plans complete — awaiting Plan 02 checkpoint) |
-| 2 | Spanish Content Migration | Not started |
+| 1 | Foundation + Pipeline | Complete (3/3 plans done) |
+| 2 | Spanish Content Migration | Executing (1/5 plans complete) |
 | 3 | English + i18n | Not started |
 | 4 | Polish + Launch | Not started |
 
-**Progress:** [███████░░░] 67%
+**Progress:** [████░░░░░░] 37%
 
 ---
 
 ## Current Position
 
-Phase: 01 (foundation-pipeline) — EXECUTING
-Plan: 3 of 3
-**Active phase:** 1 — Foundation + Pipeline  
-**Active plan:** None  
+Phase: 02 (spanish-content-migration) — EXECUTING
+Plan: 1 of 5 complete
+**Active phase:** 2 — Spanish Content Migration  
+**Active plan:** None (02-01 complete — next: 02-02)  
 **Active task:** None  
-**Last completed:** —
+**Last completed:** 02-01 — Extraction bug fix + build harness extension
 
 ---
 
@@ -78,6 +78,9 @@ Plan: 3 of 3
 - `z` imported from `astro/zod` (NOT `astro:content`) — Astro 6+ requirement
 - Use `.*?` with `re.DOTALL` for webbot/mstheme/mstable regex in extract_frontpage.py — `[^>]*` from RESEARCH.md Pattern 6 fails when WebBot comment contains `>` inside body (Pitfall 5 confirmed by fixture)
 - venv resolution in test_extract_frontpage.sh: prefer `.venv/bin/python3` when bs4 is present — dev machine pip3→Python 3.11 but python3→Python 3.12 (Homebrew version split)
+- `unwrap()` not `decompose()` for `<font>` tags in extract_frontpage.py — FrontPage wraps all body text in `<font>` elements; decompose deletes content (Plan 02-01, Pitfall 1)
+- OOXML `<![if]>...<![endif]>` conditional blocks stripped via regex before BeautifulSoup parse (Plan 02-01 Step 2.5)
+- EXPECTED_PAGES in verify-build.mjs uses WARN not fail() in Wave 0 — content pages built in Plans 02-03/04; Plan 05 Task 3 hardens to fail()
 
 ### Open Blockers
 
@@ -92,6 +95,6 @@ Plan: 3 of 3
 
 ## Session Continuity
 
-**Last session:** 2026-10-18T17:55:00.000Z
-**Stopped at:** Phase 2 planned — 5 plans verified, ready to execute
-**Next action:** /gsd:execute-phase 2
+**Last session:** 2026-10-18T18:10:00.000Z
+**Stopped at:** Phase 02 Plan 01 complete
+**Next action:** /gsd:execute-phase 2 (continue with Plan 02)
