@@ -8,7 +8,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation + Pipeline** — Astro scaffolded, i18n locked, test page live on ULPGC server
+- [x] **Phase 1: Foundation + Pipeline** — Astro scaffolded, i18n locked, test page live on ULPGC server (completed 2026-10-18)
 - [ ] **Phase 2: Spanish Content Migration** — All 14 sections live in Spanish with full layout and media
 - [ ] **Phase 3: English + i18n** — Full bilingual site with language switcher and hreflang
 - [ ] **Phase 4: Polish + Launch** — Accessibility audit, breadcrumbs, production smoke-test
@@ -30,7 +30,7 @@
   3. The i18n routing configuration (`prefixDefaultLocale`, `defaultLocale`, `locales`) is committed and will not require a rebuild after content migration begins
   4. Developer can pass any FrontPage `.htm` file through the extraction script and receive a UTF-8 Markdown file with no encoding artifacts (verified by `grep -rP "[\x80-\xFF]"` returning zero)
 
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 Plans:
 **Wave 1**
 
@@ -39,7 +39,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-02-PLAN.md — Webmaster coordination + deploy test pages to ULPGC Apache + verify UTF-8 live (FOUND-03)
+- [x] 01-02-PLAN.md — Webmaster coordination + deploy test pages to ULPGC Apache + verify UTF-8 live (FOUND-03)
 
 ### Phase 2: Spanish Content Migration
 
@@ -93,7 +93,7 @@ Plans:
 
 | Phase | Name | Plans Complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
-| 1 | Foundation + Pipeline | 2/3 | In Progress|  |
+| 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
 | 2 | Spanish Content Migration | 0/? | Not started | — |
 | 3 | English + i18n | 0/? | Not started | — |
 | 4 | Polish + Launch | 0/? | Not started | — |
