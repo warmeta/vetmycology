@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 02
 status: executing
-stopped_at: "Phase 02 Plan 01 complete (2026-10-18)"
-last_updated: "2026-10-18T18:10:00.000Z"
+stopped_at: "Phase 02 Plan 02 complete (2026-10-18)"
+last_updated: "2026-10-18T17:17:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 1
@@ -21,8 +21,8 @@ progress:
 See: .planning/PROJECT.md
 
 **Core value:** All existing content accessible through a clean, modern, navigable interface
-**Current phase:** 01
-**Status:** Plan 01-03 complete — FOUND-04 satisfied
+**Current phase:** 02
+**Status:** Plan 02-02 complete — NAV-01, NAV-02, NAV-04, NAV-05, MEDIA-03 satisfied
 
 ---
 
@@ -31,7 +31,7 @@ See: .planning/PROJECT.md
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Foundation + Pipeline | Complete (3/3 plans done) |
-| 2 | Spanish Content Migration | Executing (1/5 plans complete) |
+| 2 | Spanish Content Migration | Executing (2/5 plans complete) |
 | 3 | English + i18n | Not started |
 | 4 | Polish + Launch | Not started |
 
@@ -44,9 +44,9 @@ See: .planning/PROJECT.md
 Phase: 02 (spanish-content-migration) — EXECUTING
 Plan: 1 of 5 complete
 **Active phase:** 2 — Spanish Content Migration  
-**Active plan:** None (02-01 complete — next: 02-02)  
+**Active plan:** None (02-02 complete — next: 02-03)  
 **Active task:** None  
-**Last completed:** 02-01 — Extraction bug fix + build harness extension
+**Last completed:** 02-02 — Design system + layout shell + CSS-only nav
 
 ---
 
@@ -81,6 +81,10 @@ Plan: 1 of 5 complete
 - `unwrap()` not `decompose()` for `<font>` tags in extract_frontpage.py — FrontPage wraps all body text in `<font>` elements; decompose deletes content (Plan 02-01, Pitfall 1)
 - OOXML `<![if]>...<![endif]>` conditional blocks stripped via regex before BeautifulSoup parse (Plan 02-01 Step 2.5)
 - EXPECTED_PAGES in verify-build.mjs uses WARN not fail() in Wave 0 — content pages built in Plans 02-03/04; Plan 05 Task 3 hardens to fail()
+- CSS-only nav: :hover + :focus-within for desktop dropdowns, :checked hidden checkbox for mobile hamburger overlay — no JS shipped
+- MobileNav navGroups array duplicated inline (vs shared nav-data.ts) — simpler for Phase 2, refactor deferred to Phase 4
+- Pitfall 5 (:checked persists on resize) documented as known limitation in MobileNav.astro comment — acceptable for Wave 1
+- :global() required in ContentPage scoped style for markdown-rendered prose children — Pitfall 3 confirmed necessary in Astro 7
 
 ### Open Blockers
 
@@ -95,6 +99,6 @@ Plan: 1 of 5 complete
 
 ## Session Continuity
 
-**Last session:** 2026-10-18T18:10:00.000Z
-**Stopped at:** Phase 02 Plan 01 complete
-**Next action:** /gsd:execute-phase 2 (continue with Plan 02)
+**Last session:** 2026-10-18T17:17:00.000Z
+**Stopped at:** Phase 02 Plan 02 complete
+**Next action:** /gsd:execute-phase 2 (continue with Plan 03)
