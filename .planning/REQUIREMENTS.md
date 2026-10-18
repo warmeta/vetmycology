@@ -30,23 +30,23 @@
 - [ ] **CONT-02**: Micología page contains the complete "Generalidades de los hongos patógenos" content migrated from `generalidades_1.htm`, rendered as clean prose with correct headings
 - [ ] **CONT-03**: Grupo de trabajo page displays research group members and roles, migrated from `grupo_de_trabajo.htm`
 - [ ] **CONT-04**: Colaboración con reptiles page contains content migrated from `colreptiles.htm`
-- [ ] **CONT-05**: Artículos y congresos page contains the complete articles and conference communications list, migrated from `comunicaciones en revistas y congresos.htm`
-- [ ] **CONT-06**: Patologías por levaduras section contains pages for Candidiasis animal, Criptococosis, and Patologías por Malassezias, migrated from `patologias por levaduras.htm` sub-pages
-- [ ] **CONT-07**: Patologías por hongos filamentosos page contains migrated content from `patologias por filamentosos.htm`
-- [ ] **CONT-08**: Patologías por hongos dimórficos page contains migrated content from `patologias por dimorficos.htm`
-- [ ] **CONT-09**: Principales micosis de los peces page contains migrated content from `principales_enfermedades_pecesi.htm`
+- [x] **CONT-05**: Artículos y congresos page contains the complete articles and conference communications list, migrated from `comunicaciones en revistas y congresos.htm`
+- [x] **CONT-06**: Patologías por levaduras section contains pages for Candidiasis animal, Criptococosis, and Patologías por Malassezias, migrated from `patologias por levaduras.htm` sub-pages
+- [x] **CONT-07**: Patologías por hongos filamentosos page contains migrated content from `patologias por filamentosos.htm`
+- [x] **CONT-08**: Patologías por hongos dimórficos page contains migrated content from `patologias por dimorficos.htm`
+- [x] **CONT-09**: Principales micosis de los peces page contains migrated content from `principales_enfermedades_pecesi.htm`
 - [ ] **CONT-10**: Archivo de imágenes page displays scientific photographs in a responsive CSS Grid thumbnail layout (migrated from `archivo_de_imagenes_propias..htm`)
 - [ ] **CONT-11**: Artículos interesantes page contains curated article links, migrated from `articulos_1.htm`
 - [ ] **CONT-12**: Links de micología page contains categorized external mycology links, migrated from `links_de_micologia..htm`
 - [ ] **CONT-13**: Links revistas de micología page contains journal links, migrated from `links_revistas_de_micologia..htm`
-- [ ] **CONT-14**: Laboratorio de diagnóstico page contains diagnostic procedures content (Diagnóstico Micológico, Diagnóstico de Criptococosis, etc.), migrated from `enfermedades_infecciosas..htm`
+- [x] **CONT-14**: Laboratorio de diagnóstico page contains diagnostic procedures content (Diagnóstico Micológico, Diagnóstico de Criptococosis, etc.), migrated from `enfermedades_infecciosas..htm`
 - [ ] **CONT-15**: Bibliografía page contains the complete bibliography, migrated from `bibliografia_1.htm`, with DOI links where available
 
 ### Media & Interactivity
 
 - [ ] **MEDIA-01**: Image archive renders as a CSS Grid thumbnail grid (3-4 columns desktop, 2 columns mobile); images do not overflow the layout
 - [ ] **MEDIA-02**: User can click any thumbnail in the image archive to view the full-resolution image in a CSS-only lightbox (`:target` selector pattern, no JavaScript library)
-- [ ] **MEDIA-03**: Long pathology pages (levaduras, filamentosos, dimórficos) have a same-page table of contents with anchor links to each disease section
+- [x] **MEDIA-03**: Long pathology pages (levaduras, filamentosos, dimórficos) have a same-page table of contents with anchor links to each disease section
 - [ ] **MEDIA-04**: All PDF files (CV, protocols) are served from `public/docs/` with ASCII-only filenames; PDF links open the file in-browser or trigger download correctly on the university server
 
 ### Bilingual (English)
@@ -102,20 +102,20 @@
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
 | CONT-04 | Phase 2 | Pending |
-| CONT-05 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
-| CONT-07 | Phase 2 | Pending |
-| CONT-08 | Phase 2 | Pending |
-| CONT-09 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Complete |
+| CONT-06 | Phase 2 | Complete |
+| CONT-07 | Phase 2 | Complete |
+| CONT-08 | Phase 2 | Complete |
+| CONT-09 | Phase 2 | Complete |
 | CONT-10 | Phase 2 | Pending |
 | CONT-11 | Phase 2 | Pending |
 | CONT-12 | Phase 2 | Pending |
 | CONT-13 | Phase 2 | Pending |
-| CONT-14 | Phase 2 | Pending |
+| CONT-14 | Phase 2 | Complete |
 | CONT-15 | Phase 2 | Pending |
 | MEDIA-01 | Phase 2 | Pending |
 | MEDIA-02 | Phase 2 | Pending |
-| MEDIA-03 | Phase 2 | Pending |
+| MEDIA-03 | Phase 2 | Complete |
 | MEDIA-04 | Phase 2 | Pending |
 | I18N-01 | Phase 3 | Pending |
 | I18N-02 | Phase 3 | Pending |
