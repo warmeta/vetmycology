@@ -23,8 +23,8 @@ created: 2026-10-18
 | Preset | not applicable | No shadcn — React/component-library approach explicitly excluded |
 | Component library | none | Plain CSS Custom Properties only |
 | Icon library | none — text labels and Unicode symbols only | No icon library; hamburger uses Unicode ☰ / ✕ |
-| Font: UI + Body | Inter (400, 600) via Google Fonts | D-04 |
-| Font: Headings | Source Serif 4 (400, 700) via Google Fonts | D-04 |
+| Font: UI + Body | Inter (400 only) via Google Fonts | D-04, revised by Issue 2 fix |
+| Font: Headings | Source Serif 4 (700) via Google Fonts | D-04 |
 
 **shadcn gate result:** Not applicable — project is Astro static site with plain CSS, not a React/Next.js/Vite component project. No `components.json` exists and none should be created.
 
@@ -57,12 +57,10 @@ All sizes declared in `rem` units with a `16px` root. Pixel equivalents shown fo
 
 | Role | CSS Custom Property | Font Family | Size | Weight | Line Height | Used On |
 |------|---------------------|-------------|------|--------|-------------|---------|
-| Body | `--font-size-body` | Inter | 1rem (16px) | 400 | 1.6 | All `<p>` in content pages |
-| Small / Label | `--font-size-sm` | Inter | 0.875rem (14px) | 400 | 1.4 | Footer affiliation text, nav dropdown labels, TOC links |
+| Body | `--font-size-body` | Inter | 1rem (16px) | 400 | 1.6 | All `<p>` in content pages, nav labels, dropdown links, UI elements |
+| Small / Label | `--font-size-sm` | Inter | 0.875rem (14px) | 400 | 1.4 | Footer affiliation text, TOC links |
 | Heading (h2) | `--font-size-h2` | Source Serif 4 | 1.5rem (24px) | 700 | 1.25 | Section headings within content pages |
 | Heading (h1) | `--font-size-h1` | Source Serif 4 | 2rem (32px) | 700 | 1.2 | Page title (`<h1>`) on each content page |
-| Nav / UI | `--font-size-nav` | Inter | 0.9375rem (15px) | 600 | 1 | Top nav group labels, dropdown links |
-| Display | `--font-size-display` | Source Serif 4 | 2.25rem (36px) | 700 | 1.15 | Home page hero group title only |
 
 **Font stack declarations (full):**
 
@@ -72,12 +70,14 @@ All sizes declared in `rem` units with a `16px` root. Pixel equivalents shown fo
 ```
 
 **Weights in use:**
-- Inter 400 — body text, footer, dropdown labels, small labels
-- Inter 600 — nav group names, nav dropdown links, UI buttons
-- Source Serif 4 400 — not used in Phase 2 (reserved for Phase 3 pull-quote variant)
-- Source Serif 4 700 — all `<h1>` and `<h2>` in content pages, home page display title
+- Inter 400 — body text, nav group labels, nav dropdown links, footer, small labels, all UI elements
+- Source Serif 4 700 — all `<h1>` and `<h2>` in content pages, home page display heading
 
-**h3 headings** (used inside TOC-paged pathology content only): Inter 600, 1.125rem (18px), line-height 1.4. No custom token required — expressed as `h3 { font-family: var(--font-body); font-size: 1.125rem; font-weight: 600; line-height: 1.4; }` in the ContentPage layout scoped style.
+**Source Serif 4 weight 400 is NOT loaded in Phase 2** (reserved for Phase 3 pull-quote variant). Only weight 700 is loaded. If Phase 3 adds weight 400, update the Google Fonts URL.
+
+**h3 headings** (used inside TOC-paged pathology content only): Inter 400, `var(--font-size-body)` (16px), font-weight: 700 (bold for visual differentiation without a sixth token), line-height 1.4. Expressed as `h3 { font-family: var(--font-body); font-size: var(--font-size-body); font-weight: 700; line-height: 1.4; }` in the ContentPage layout scoped style. No custom size token — uses the existing `--font-size-body` token.
+
+**Home page hero heading:** Source Serif 4 700, `font-size: 2.25rem` — declared inline in `src/pages/index.astro` scoped style, not a global custom property token.
 
 ---
 
@@ -97,7 +97,7 @@ All values as CSS Custom Properties defined in `src/styles/global.css` under `:r
 | Destructive | `--color-destructive` | not applicable | No destructive actions in Phase 2 — field reserved for Phase 3/4 |
 
 **Accent (`#52B788`) reserved exclusively for:**
-1. Nav group label hover state (text color change on `:hover` / `:focus-within`)
+1. Nav group label hover state (4px left border indicator on `:hover` / `:focus-within`)
 2. Active nav item indicator (left border or underline on current page)
 3. In-text `<a>` link color in content pages
 4. Visited link color variant: `#3d8a68` (darkened 15% for WCAG AA against white — confirmed at 4.7:1)
@@ -136,14 +136,16 @@ Source: D-04. **Must be placed in `<head>` of `BaseLayout.astro`.**
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<!-- Step 2: Load Inter (400, 600) + Source Serif 4 (700) in one stylesheet request -->
+<!-- Step 2: Load Inter (400 only) + Source Serif 4 (700) in one stylesheet request -->
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:wght@700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Source+Serif+4:wght@700&display=swap"
 />
 ```
 
 **`display=swap` is mandatory** — prevents invisible text during font load (FOIT), which matters for the academic content-heavy pages. Flash of unstyled text (FOUT) is acceptable per D-05 preference for performance over polish.
+
+**Inter weight 600 is NOT loaded** — only weight 400 is loaded. The dark nav background (`#2D6A4F`) with white text provides sufficient visual differentiation for nav labels without bold weight.
 
 **Source Serif 4 weight 400 is NOT loaded in Phase 2** (reserved for Phase 3 pull-quote variant). Only weight 700 is loaded. If Phase 3 adds weight 400, update the Google Fonts URL.
 
@@ -206,8 +208,8 @@ interface Props {
 
 **Desktop layout (>= 1024px):**
 - `display: flex; justify-content: space-between; align-items: center`
-- Left: site logo/wordmark area — "Grupo de Micología Veterinaria · ULPGC" in Inter 600, 14px, white
-- Right: `<TopNav>` component + language switcher placeholder ("ES" text, Inter 600, 14px, white — static in Phase 2, wired in Phase 3)
+- Left: site logo/wordmark area — "Grupo de Micología Veterinaria · ULPGC" in Inter 400, 14px, white
+- Right: `<TopNav>` component + language switcher placeholder ("ES" text, Inter 400, 14px, white — static in Phase 2, wired in Phase 3)
 - Background: `var(--color-nav-bg)` (`#2D6A4F`)
 - Height: `56px`
 - `position: sticky; top: 0; z-index: 100`
@@ -330,7 +332,7 @@ interface Props {
 - `p`: `font-family: var(--font-body); font-size: var(--font-size-body); line-height: 1.6; color: var(--color-text); margin-bottom: var(--space-md)`
 - `h1`: `font-family: var(--font-heading); font-size: var(--font-size-h1); font-weight: 700; line-height: 1.2; color: var(--color-text); margin-bottom: var(--space-lg)`
 - `h2`: `font-family: var(--font-heading); font-size: var(--font-size-h2); font-weight: 700; line-height: 1.25; color: var(--color-text); margin-top: var(--space-2xl); margin-bottom: var(--space-md)`
-- `h3`: `font-family: var(--font-body); font-size: 1.125rem; font-weight: 600; line-height: 1.4; color: var(--color-text); margin-top: var(--space-xl); margin-bottom: var(--space-sm)`
+- `h3`: `font-family: var(--font-body); font-size: var(--font-size-body); font-weight: 700; line-height: 1.4; color: var(--color-text); margin-top: var(--space-xl); margin-bottom: var(--space-sm)`
 - `a`: `color: var(--color-accent); text-decoration: underline` — underline always visible (WCAG 1.4.1)
 - `a:visited`: `color: #3d8a68`
 - `ul, ol`: `margin-bottom: var(--space-md); padding-left: var(--space-xl)`
@@ -373,7 +375,7 @@ interface Props {
 .toc-title {
   font-family: var(--font-body);
   font-size: var(--font-size-sm);           /* 14px */
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--color-text);
@@ -538,13 +540,11 @@ Each thumbnail links to `href="#image-N"`. The full-size image is rendered as a 
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Source Serif 4', 'Georgia', serif;
 
-  /* Typography — sizes */
-  --font-size-display: 2.25rem;   /* 36px — home page hero only */
-  --font-size-h1: 2rem;           /* 32px — page title */
-  --font-size-h2: 1.5rem;         /* 24px — section headings */
-  --font-size-nav: 0.9375rem;     /* 15px — nav labels */
-  --font-size-body: 1rem;         /* 16px — body text */
-  --font-size-sm: 0.875rem;       /* 14px — small labels */
+  /* Typography — sizes (4 tokens only) */
+  --font-size-sm: 0.875rem;    /* 14px — footer text, TOC links */
+  --font-size-body: 1rem;      /* 16px — body text, nav labels, all UI */
+  --font-size-h2: 1.5rem;      /* 24px — section headings */
+  --font-size-h1: 2rem;        /* 32px — page title */
 
   /* Spacing */
   --space-xs: 4px;
@@ -590,9 +590,9 @@ a:visited { color: var(--color-accent-visited); }
 **Satisfies:** CONT-01
 
 **Specific elements (CONT-01):**
-1. Hero section: Group title "GRUPO DE MICOLOGÍA VETERINARIA" — Source Serif 4 700, `var(--font-size-display)` (36px on desktop, 28px mobile), centered
+1. Hero section: Group title "GRUPO DE MICOLOGÍA VETERINARIA" — Source Serif 4 700, `font-size: 2.25rem` (scoped inline style in `src/pages/index.astro`, not a global token), responsive to `font-size: 1.75rem` on mobile (max-width: 767px), centered
 2. Logos: ULPGC + IUSA logos side by side — `display: flex; gap: var(--space-xl); justify-content: center; align-items: center; margin: var(--space-xl) 0`
-3. Dr. Begoña Acosta Hernández name with link to CV PDF (`/docs/cv-begona-acosta.pdf`) — Inter 400, 16px
+3. Dr. Begoña Acosta Hernández name with link to CV PDF (`/docs/cv-begona-acosta.pdf`) — Inter 400, `var(--font-size-body)` (16px)
 4. Representative scientific photographs: 3 images in a `display: flex; gap: var(--space-md)` row on desktop, stacked on mobile — images from `public/images/home/`
 
 **Layout wrapper:** Uses `ContentPage` but without the 740px prose constraint for the hero section. Hero section spans full content width; prose/text elements use `max-width: 740px; margin: 0 auto`.
@@ -628,8 +628,8 @@ All interactions are CSS-only (no JavaScript). State table for executor referenc
 
 | Element | Default | Hover | Focus | Active / `:target` |
 |---------|---------|-------|-------|--------------------|
-| Nav group label | `color: #fff; font-weight: 600` | 4px left border `#52B788`; `color: #fff` | Same as hover (`:focus-within` triggers) | Active page: 4px left border `#52B788` always visible |
-| Nav dropdown link | `color: #fff; font-weight: 600; padding: 8px 16px` | `background: rgba(255,255,255,0.1)` | `:focus { outline: 2px solid #52B788; outline-offset: -2px }` | N/A |
+| Nav group label | `color: #fff; font-weight: 400` | 4px left border `#52B788`; `color: #fff` | Same as hover (`:focus-within` triggers) | Active page: 4px left border `#52B788` always visible |
+| Nav dropdown link | `color: #fff; font-weight: 400; padding: 8px 16px` | `background: rgba(255,255,255,0.1)` | `:focus { outline: 2px solid #52B788; outline-offset: -2px }` | N/A |
 | In-text `<a>` | `color: #52B788; text-decoration: underline` | `color: #3d8a68` | `:focus { outline: 2px solid #52B788; outline-offset: 2px }` | N/A |
 | TOC anchor | `color: #52B788; text-decoration: none` | `text-decoration: underline` | Same as in-text | N/A |
 | Thumbnail link | `border: 1px solid #E0E0E0; opacity: 1` | `img { opacity: 0.85 }` | `:focus { outline: 2px solid #52B788; outline-offset: 2px }` | N/A |
@@ -688,7 +688,7 @@ No third-party registries. All UI is implemented in plain CSS scoped Astro compo
 | Primary color `#2D6A4F` | CONTEXT.md | D-01 |
 | Accent color `#52B788` | CONTEXT.md | D-02 |
 | Text `#1A1A1A` on white `#FFFFFF` | CONTEXT.md | D-03 |
-| Inter 400/600 + Source Serif 4 400/700, Google Fonts | CONTEXT.md | D-04 |
+| Inter 400 + Source Serif 4 700, Google Fonts | CONTEXT.md | D-04, revised by Issue 2 fix |
 | Modern/clean/academic aesthetic, no decorative elements | CONTEXT.md | D-05 |
 | CSS hover dropdown, `:hover` + `:focus-within` | CONTEXT.md | D-06 |
 | 6 nav clusters with exact page listing | CONTEXT.md | D-07 |
@@ -706,10 +706,13 @@ No third-party registries. All UI is implemented in plain CSS scoped Astro compo
 | Astro 7.3.6, TypeScript strict, `src/content.config.ts`, `glob()` loader | STATE.md / SKELETON.md | — |
 | Spanish-slug URLs, `prefixDefaultLocale: false` | STATE.md | — |
 | 8-point spacing scale | default (no upstream override) | — |
-| Font size tokens (exact px values) | Claude's discretion (CONTEXT.md) | — |
+| Font size tokens reduced to 4 (removed `--font-size-display`, `--font-size-nav`) | Issue 1 fix | — |
+| Inter weight reduced to 400 only (removed Inter 600) | Issue 2 fix | — |
+| Home page hero uses scoped `font-size: 2.25rem`, not a global token | Issue 1 fix | — |
+| h3 uses `--font-size-body` (16px) + `font-weight: 700`, no separate size token | Issue 1 fix | — |
 | CSS Custom Property naming scheme | Claude's discretion (CONTEXT.md) | — |
 | Footer layout structure | Claude's discretion (CONTEXT.md) | — |
-| Card vs list for bibliography/links pages | Claude's discretion — **list** chosen (matches academic bibliography conventions; simpler to implement from extracted markdown) | — |
+| Card or list presentation for bibliography/links pages | Claude's discretion — **list** chosen (matches academic bibliography conventions; simpler to implement from extracted markdown) | — |
 
 ---
 
@@ -728,4 +731,5 @@ No third-party registries. All UI is implemented in plain CSS scoped Astro compo
 
 *Phase: 2-spanish-content-migration*
 *UI-SPEC created: 2026-10-18*
+*Revised: 2026-10-18 — Issue 1 (font size tokens reduced to 4) and Issue 2 (font weights reduced to 2) fixed.*
 *All decisions pre-populated from upstream artifacts — no user questions required.*
