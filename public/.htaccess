@@ -1,0 +1,69 @@
+# .htaccess — VetMyc ULPGC Apache configuration
+#
+# This file is copied to dist/ by Astro's static build (anything in public/
+# lands in dist/ unchanged). It is uploaded to the ULPGC server root via rsync.
+#
+# Purpose:
+#   1. Ensure DirectoryIndex index.html works for Astro's format:'directory' output
+#   2. Send AddDefaultCharset UTF-8 so browsers display ñ/á/é correctly
+#   3. Belt-and-suspenders HTTPS redirect (primary redirect is at vhost level)
+#
+# Requirements:
+#   AllowOverride FileInfo (or AllowOverride All) must be active for this directory.
+#   Confirmed: ULPGC webmaster confirmed AllowOverride is at least FileInfo.
+
+# ---------------------------------------------------------------------------
+# 1. DirectoryIndex
+#    Astro build.format:'directory' produces /about/index.html etc.
+#    Without this, Apache may return 403 Forbidden for directory URLs.
+# ---------------------------------------------------------------------------
+DirectoryIndex index.html
+
+# ---------------------------------------------------------------------------
+# 2. UTF-8 charset header for all HTML responses
+#    Ensures Content-Type: text/html; charset=utf-8 even if the vhost does
+#    not set AddDefaultCharset. Prevents browser mojibake for Spanish content.
+# ---------------------------------------------------------------------------
+AddDefaultCharset UTF-8
+
+# ---------------------------------------------------------------------------
+# 3. HTTPS redirect (belt and suspenders)
+#    Primary HTTPS enforcement is at the ULPGC vhost level. This .htaccess
+#    redirect is a backup in case the vhost config changes or the site is
+#    accessed via HTTP from a legacy bookmark.
+#    Only active when mod_rewrite is loaded (standard on most Apache installs).
+# ---------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Only redirect if not already HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ---------------------------------------------------------------------------
+# 4. Cache headers for static assets (images, CSS, JS)
+#    Astro content-hashes filenames, so long cache times are safe for assets.
+#    HTML pages get shorter cache (allows updates to propagate in minutes).
+# ---------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML — 5 minutes (allows Phase 2+ content updates to propagate quickly)
+  ExpiresByType text/html "access plus 5 minutes"
+
+  # CSS and JavaScript (content-hashed by Astro)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Images
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+
+  # Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+</IfModule>
