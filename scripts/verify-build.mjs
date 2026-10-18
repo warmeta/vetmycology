@@ -24,6 +24,28 @@ const DIST_EN_INDEX = join(DIST, 'en', 'index.html');
 const DIST_EN_HTML = join(DIST, 'en.html'); // must NOT exist (confirms format:directory)
 
 // ---------------------------------------------------------------------------
+// Expected pages — all 14 content section index.html files + home
+// (URL + Slug Map from 02-UI-SPEC.md — authoritative list)
+// ---------------------------------------------------------------------------
+const EXPECTED_PAGES = [
+  'index.html',
+  'micologia/generalidades/index.html',
+  'micologia/grupo-de-trabajo/index.html',
+  'micologia/colreptiles/index.html',
+  'patologias/levaduras/index.html',
+  'patologias/filamentosos/index.html',
+  'patologias/dimorficos/index.html',
+  'patologias/micosis-peces/index.html',
+  'investigacion/articulos-congresos/index.html',
+  'investigacion/articulos-interesantes/index.html',
+  'laboratorio/index.html',
+  'recursos/archivo-imagenes/index.html',
+  'recursos/links-micologia/index.html',
+  'recursos/links-revistas/index.html',
+  'recursos/bibliografia/index.html',
+];
+
+// ---------------------------------------------------------------------------
 // Expected content literals (must match exactly what the build produces)
 // ---------------------------------------------------------------------------
 const SPANISH_LITERAL = 'Micología Veterinaria — ñoño, cándida, pérez';
@@ -143,6 +165,19 @@ if (existsSync(DIST_EN_HTML)) {
   );
 } else {
   pass('dist/en.html does not exist (confirms build.format:directory is active)');
+}
+
+// ---------------------------------------------------------------------------
+// Assertion 6: All expected content section pages declared in EXPECTED_PAGES
+// NOTE: WARN-only in Wave 0; Plan 05 Task 3 upgrades to hard fail
+// ---------------------------------------------------------------------------
+for (const pagePath of EXPECTED_PAGES) {
+  const fullPath = join(DIST, pagePath);
+  if (existsSync(fullPath)) {
+    pass(`dist/${pagePath} exists`);
+  } else {
+    console.warn(`WARN: dist/${pagePath} not found (expected content page — not yet built)`);
+  }
 }
 
 // ---------------------------------------------------------------------------
