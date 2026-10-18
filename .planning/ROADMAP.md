@@ -54,8 +54,24 @@ Plans:
   3. Long pathology pages (levaduras, filamentosos, dimórficos) display a working table of contents with anchor links to each disease section
   4. All PDF files (CV, protocols) open correctly from their links when served from the ULPGC Apache server
 
-**Plans:** TBD
-**UI hint**: yes
+**Plans:** 5 plans
+Plans:
+**Wave 0**
+
+- [ ] 02-01-PLAN.md — Fix extract_frontpage.py (<font> unwrap bug) + extend verify-build.mjs with EXPECTED_PAGES list (BLOCKING)
+
+**Wave 1** *(blocked on Wave 0)*
+
+- [ ] 02-02-PLAN.md — Design system (global.css tokens) + BaseLayout/ContentPage/TableOfContents + Header/TopNav/MobileNav/Footer + Content Collections schema (NAV-01, NAV-02, NAV-04, NAV-05, MEDIA-03)
+
+**Wave 2** *(parallel; blocked on Wave 1)*
+
+- [ ] 02-03-PLAN.md — Home page + 7 simple content section pages (CONT-01, CONT-02, CONT-03, CONT-04, CONT-11, CONT-12, CONT-13, CONT-15)
+- [ ] 02-04-PLAN.md — 4 pathology pages (3 with TOC) + laboratorio + artículos y congresos (CONT-05, CONT-06, CONT-07, CONT-08, CONT-09, CONT-14, MEDIA-03)
+
+**Wave 3** *(blocked on Waves 1 and 2)*
+
+- [ ] 02-05-PLAN.md — Image archive page (CSS Grid + :target lightbox) + logos + PDFs + verify-build.mjs hard-fail upgrade + manual responsive/accessibility verification (CONT-10, MEDIA-01, MEDIA-02, MEDIA-04)
 
 ### Phase 3: English + i18n
 
@@ -94,6 +110,6 @@ Plans:
 | Phase | Name | Plans Complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
 | 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
-| 2 | Spanish Content Migration | 0/? | Not started | — |
+| 2 | Spanish Content Migration | 0/5 | Not started | — |
 | 3 | English + i18n | 0/? | Not started | — |
 | 4 | Polish + Launch | 0/? | Not started | — |
