@@ -3,6 +3,7 @@ title: "Interesting Articles"
 description: "Selection of scientific articles of interest in veterinary mycology."
 toc: false
 lang: "en"
+breadcrumb_parent: "Investigación"
 ---
 
 **Interesting articles**

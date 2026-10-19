@@ -3,6 +3,7 @@ title: "Mycology Links"
 description: "External links of interest in mycology: societies, databases and scientific resources."
 toc: false
 lang: "en"
+breadcrumb_parent: "Recursos"
 ---
 
 **Mycology links** <http://www.mycology.adelaide.edu.au/>

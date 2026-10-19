@@ -3,6 +3,7 @@ title: "Dimorphic Fungal Pathologies"
 description: "Histoplasmosis and Sporotrichosis in domestic animals: etiology, diagnosis and treatment"
 toc: true
 lang: "en"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Histoplasmosis

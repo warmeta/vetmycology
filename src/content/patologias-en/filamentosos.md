@@ -3,6 +3,7 @@ title: "Filamentous Fungal Pathologies"
 description: "Dermatophytosis and Aspergillosis in domestic animals: etiology, diagnosis and treatment"
 toc: true
 lang: "en"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Dermatophytosis

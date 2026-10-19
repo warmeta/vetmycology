@@ -3,6 +3,7 @@ title: "Articles and Congresses"
 description: "Publications in international journals, congress communications, doctoral theses and research projects of the Veterinary Mycology Group."
 toc: false
 lang: "en"
+breadcrumb_parent: "Investigación"
 ---
 
 **Publications in international journals**

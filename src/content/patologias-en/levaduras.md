@@ -3,6 +3,7 @@ title: "Yeast Pathologies"
 description: "Animal Candidiasis, Cryptococcosis and Malassezia Pathologies in domestic animals"
 toc: true
 lang: "en"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Animal Candidiasis

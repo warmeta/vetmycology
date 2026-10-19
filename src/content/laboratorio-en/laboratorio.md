@@ -3,13 +3,14 @@ title: "Mycological Diagnostic Laboratory"
 description: "Mycological diagnosis of cryptococcosis, candidiasis, Malassezia pathologies, dermatophytosis and other mycoses at the Veterinary Mycology Laboratory."
 toc: false
 lang: "en"
+breadcrumb_parent: "Laboratorio"
 ---
 
-INFECTIOUS DISEASES
+## INFECTIOUS DISEASES
 
-MYCOLOGICAL DIAGNOSIS
+## MYCOLOGICAL DIAGNOSIS
 
-DIAGNOSIS OF CRYPTOCOCCOSIS
+## DIAGNOSIS OF CRYPTOCOCCOSIS
 
 Cryptococcosis is a disease caused by *Cryptococcus neoformans*, which has a worldwide distribution. The disease follows a subacute to chronic course,
 

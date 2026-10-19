@@ -3,6 +3,7 @@ title: "Research Group"
 description: "Members of the veterinary mycology research group at the Faculty of Veterinary Medicine, ULPGC."
 toc: false
 lang: "en"
+breadcrumb_parent: "Micología"
 ---
 
 ## Veterinary Mycology Group · ULPGC

@@ -3,6 +3,7 @@ title: "Mycology Journal Links"
 description: "Scientific journals specialising in mycology and fungal diseases."
 toc: false
 lang: "en"
+breadcrumb_parent: "Recursos"
 ---
 
 **Mycology journal links** <http://www.isham.org/about/Journal.html>

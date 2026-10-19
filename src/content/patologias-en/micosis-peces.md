@@ -3,6 +3,7 @@ title: "Main Fungal Diseases in Fish"
 description: "Main diseases caused by chromists and fungi in fish: saprolegniasis, systemic mycoses and aphanomycosis."
 toc: false
 lang: "en"
+breadcrumb_parent: "Patologías"
 ---
 
 **MAIN DISEASES CAUSED BY CHROMISTS AND FUNGI

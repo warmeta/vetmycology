@@ -3,6 +3,7 @@ title: "Bibliography"
 description: "Reference bibliography in veterinary mycology used by the research group."
 toc: false
 lang: "en"
+breadcrumb_parent: "Recursos"
 ---
 
 ## BIBLIOGRAPHY

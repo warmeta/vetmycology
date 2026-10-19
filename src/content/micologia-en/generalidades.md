@@ -3,6 +3,7 @@ title: "Generalities of Pathogenic Fungi"
 description: "Introduction to veterinary mycology: classification, reproduction and diagnostic techniques for pathogenic fungi."
 toc: false
 lang: "en"
+breadcrumb_parent: "Micología"
 ---
 
 ## GENERALITIES OF PATHOGENIC FUNGI AND MAIN MYCOLOGICAL TECHNIQUES
