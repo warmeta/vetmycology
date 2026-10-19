@@ -235,6 +235,50 @@ for (const pagePath of EXPECTED_EN_PAGES) {
 }
 
 // ---------------------------------------------------------------------------
+// Assertion 9: BreadcrumbList JSON-LD in all 13 ES content pages
+// (excludes index.html home page and recursos/archivo-imagenes which uses ImageArchive layout)
+// ---------------------------------------------------------------------------
+const EXPECTED_BREADCRUMB_PAGES = EXPECTED_PAGES.filter(
+  (p) => p !== 'index.html' && p !== 'recursos/archivo-imagenes/index.html',
+);
+
+for (const pagePath of EXPECTED_BREADCRUMB_PAGES) {
+  const resolvedPath = join(DIST, pagePath);
+  try {
+    const html = readStrictUtf8(resolvedPath);
+    if (html.includes('BreadcrumbList')) {
+      pass(`BreadcrumbList JSON-LD in dist/${pagePath}`);
+    } else {
+      fail(`BreadcrumbList JSON-LD MISSING in dist/${pagePath}`);
+    }
+  } catch (err) {
+    fail(`Could not read dist/${pagePath}: ${err.message}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Assertion 10: BreadcrumbList JSON-LD in all 13 EN content pages
+// (excludes en/index.html home page and en/recursos/archivo-imagenes)
+// ---------------------------------------------------------------------------
+const EXPECTED_EN_BREADCRUMB_PAGES = EXPECTED_EN_PAGES.filter(
+  (p) => p !== 'en/index.html' && p !== 'en/recursos/archivo-imagenes/index.html',
+);
+
+for (const pagePath of EXPECTED_EN_BREADCRUMB_PAGES) {
+  const resolvedPath = join(DIST, pagePath);
+  try {
+    const html = readStrictUtf8(resolvedPath);
+    if (html.includes('BreadcrumbList')) {
+      pass(`BreadcrumbList JSON-LD in dist/${pagePath}`);
+    } else {
+      fail(`BreadcrumbList JSON-LD MISSING in dist/${pagePath}`);
+    }
+  } catch (err) {
+    fail(`Could not read dist/${pagePath}: ${err.message}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Summary
 // ---------------------------------------------------------------------------
 console.log('');
