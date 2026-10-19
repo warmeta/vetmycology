@@ -113,7 +113,23 @@ Plans:
   2. Every page displays a breadcrumb trail in the page locale (e.g., `Inicio > Patologías > Levaduras`) and the breadcrumb renders `BreadcrumbList` structured data in the page source
   3. A full manual smoke-test across all 14 sections in both ES and EN on the live ULPGC server returns no broken links, no encoding artifacts, and no 404s
 
-**Plans:** TBD
+**Plans:** 4 plans
+Plans:
+**Wave 1** *(independent — no code changes, CI/CD only)*
+
+- [ ] 04-01-PLAN.md — GitHub Actions deploy workflow (.github/workflows/deploy.yml) + .gitignore entry for FTP state file (FOUND-05)
+
+**Wave 2** *(blocked on Wave 1)*
+
+- [ ] 04-02-PLAN.md — contentSchema extension + breadcrumb i18n keys + Breadcrumb.astro component + ContentPage slot forwarding (I18N-05)
+
+**Wave 3** *(blocked on Wave 2)*
+
+- [ ] 04-03-PLAN.md — Populate breadcrumb_parent in 26 content markdown files + fix laboratorio heading hierarchy + extend verify-build.mjs with breadcrumb assertions (I18N-05, FOUND-05)
+
+**Wave 4** *(blocked on Waves 2 and 3)*
+
+- [ ] 04-04-PLAN.md — Contrast audit + WCAG structural checklist + production deploy smoke test (FOUND-05, I18N-05)
 
 ---
 
@@ -124,4 +140,4 @@ Plans:
 | 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
 | 2 | Spanish Content Migration | 5/5 | Complete   | 2026-10-19 |
 | 3 | English + i18n | 4/4 | Complete   | 2026-10-19 |
-| 4 | Polish + Launch | 0/? | Not started | — |
+| 4 | Polish + Launch | 0/4 | Not started | — |
