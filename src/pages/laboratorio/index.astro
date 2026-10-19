@@ -15,6 +15,7 @@ const { Content } = await render(entry);
   title={entry.data.title}
   description={entry.data.description}
   lang={entry.data.lang}
+  breadcrumbParent={entry.data.breadcrumb_parent}
 >
   <Content />
 </ContentPage>
