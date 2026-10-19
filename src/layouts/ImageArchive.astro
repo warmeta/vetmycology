@@ -10,11 +10,12 @@ interface Props {
     fullSrc: string;
     alt: string;
   }>;
+  lang?: 'es' | 'en';
 }
 
-const { title, description, images } = Astro.props;
+const { title, description, images, lang = 'es' } = Astro.props;
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} lang={lang}>
   <main id="main-content" class="archive-main">
     <h1>{title}</h1>
     <div class="image-grid">
