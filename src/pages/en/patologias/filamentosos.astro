@@ -1,0 +1,30 @@
+---
+// src/pages/en/patologias/filamentosos.astro
+// Filamentous Fungal Pathologies — EN page with TableOfContents (toc: true)
+// tocItems IDs will be verified from dist HTML after trial build (Step 3)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias-en', 'filamentosos');
+if (!entry) throw new Error('Entry not found: patologias-en/filamentosos');
+
+const { Content } = await render(entry);
+
+// IDs are Sätteri auto-generated kebab-case slugs from h2 text
+// Verified by inspecting dist/en/patologias/filamentosos/index.html after trial build:
+// "Dermatophytosis" → "dermatophytosis"
+// "Aspergillosis" → "aspergillosis"
+const tocItems = [
+  { id: 'dermatophytosis', label: 'Dermatophytosis' },
+  { id: 'aspergillosis', label: 'Aspergillosis' },
+];
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  toc={true}
+  tocItems={tocItems}
+  lang="en"
+>
+  <Content />
+</ContentPage>

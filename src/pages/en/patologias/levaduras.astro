@@ -1,0 +1,32 @@
+---
+// src/pages/en/patologias/levaduras.astro
+// Yeast Pathologies — EN page with TableOfContents (toc: true)
+// tocItems IDs will be verified from dist HTML after trial build (Step 3)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias-en', 'levaduras');
+if (!entry) throw new Error('Entry not found: patologias-en/levaduras');
+
+const { Content } = await render(entry);
+
+// IDs are Sätteri auto-generated kebab-case slugs from h2 text
+// Verified by inspecting dist/en/patologias/levaduras/index.html after trial build:
+// "Animal Candidiasis" → "animal-candidiasis"
+// "Cryptococcosis" → "cryptococcosis"
+// "Malassezia Pathologies" → "malassezia-pathologies"
+const tocItems = [
+  { id: 'animal-candidiasis', label: 'Animal Candidiasis' },
+  { id: 'cryptococcosis', label: 'Cryptococcosis' },
+  { id: 'malassezia-pathologies', label: 'Malassezia Pathologies' },
+];
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  toc={true}
+  tocItems={tocItems}
+  lang="en"
+>
+  <Content />
+</ContentPage>

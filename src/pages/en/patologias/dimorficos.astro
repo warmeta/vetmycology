@@ -1,0 +1,30 @@
+---
+// src/pages/en/patologias/dimorficos.astro
+// Dimorphic Fungal Pathologies — EN page with TableOfContents (toc: true)
+// tocItems IDs will be verified from dist HTML after trial build (Step 3)
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../../layouts/ContentPage.astro';
+
+const entry = await getEntry('patologias-en', 'dimorficos');
+if (!entry) throw new Error('Entry not found: patologias-en/dimorficos');
+
+const { Content } = await render(entry);
+
+// IDs are Sätteri auto-generated kebab-case slugs from h2 text
+// Verified by inspecting dist/en/patologias/dimorficos/index.html after trial build:
+// "Histoplasmosis" → "histoplasmosis"
+// "Sporotrichosis" → "sporotrichosis"
+const tocItems = [
+  { id: 'histoplasmosis', label: 'Histoplasmosis' },
+  { id: 'sporotrichosis', label: 'Sporotrichosis' },
+];
+---
+<ContentPage
+  title={entry.data.title}
+  description={entry.data.description}
+  toc={true}
+  tocItems={tocItems}
+  lang="en"
+>
+  <Content />
+</ContentPage>
