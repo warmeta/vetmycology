@@ -724,21 +724,13 @@ Based on dependency analysis, the optimal wave structure for Phase 3:
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Image archive EN alt texts**
-   - What we know: `archivo-imagenes.astro` has 20 images with Spanish `alt` strings hardcoded inline (not from a content collection)
-   - What's unclear: Whether the EN page needs translated `alt` texts or if the Spanish alt texts are acceptable for EN (since the images are scientific photographs)
-   - Recommendation: Translate alt texts for WCAG compliance — at minimum provide EN strings for the page title and description. Alt text language should match `html[lang]`.
+1. **Image archive EN alt texts** — RESOLVED: Translate all 20 alt strings for WCAG compliance (`html[lang="en"]`). Plan 03-03 Task 2 includes English alt texts for all 20 images.
 
-2. **Artículos y congresos — to translate or not**
-   - What we know: This page is a list of academic publications. Most publication titles are in Spanish or contain mixed language (Spanish/English scientific terms).
-   - What's unclear: Whether I18N-02 requires translating publication list content or just the UI wrapper
-   - Recommendation: Translate the section headings and contextual prose; keep publication titles in their original language (standard academic practice).
+2. **Artículos y congresos — to translate or not** — RESOLVED: Translate section headings and contextual prose; keep publication titles in their original language (standard academic practice). Plan 03-02 Task 1 follows this approach.
 
-3. **verify-build.mjs EN pages coverage**
-   - What we know: The current `EXPECTED_PAGES` list only covers Spanish pages. Phase 3 should extend it with EN equivalents.
-   - Recommendation: Add an `EXPECTED_EN_PAGES` array with all 15 EN dist paths to verify-build.mjs as part of Wave 3.
+3. **verify-build.mjs EN pages coverage** — RESOLVED: Plan 03-04 Task 1 adds `EXPECTED_EN_PAGES` array with all 15 EN dist paths to `scripts/verify-build.mjs`.
 
 ---
 

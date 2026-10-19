@@ -86,8 +86,20 @@ Plans:
   3. Every page `<head>` contains correct `hreflang` link elements for ES, EN, and `x-default` pointing to the Spanish version
   4. All navigation labels, footer text, language switcher aria-labels, and UI strings display in the correct language on each locale
 
-**Plans:** TBD
-**UI hint**: yes
+**Plans:** 4 plans
+Plans:
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — i18n infrastructure: ui.ts translation dictionary, 5 EN content collections, LangSwitcher component, BaseLayout hreflang, Header/Footer/TableOfContents/TopNav/MobileNav locale-aware updates (NAV-03, I18N-03, I18N-04)
+
+**Wave 2** *(parallel; blocked on Wave 1)*
+
+- [ ] 03-02-PLAN.md — 10 EN non-TOC markdown translations + 11 EN Astro pages (home + 10 content sections) (I18N-01, I18N-02)
+- [ ] 03-03-PLAN.md — 3 EN TOC pathology pages (Sätteri ID verification) + EN image archive page with English alt texts (I18N-01, I18N-02)
+
+**Wave 3** *(blocked on Waves 1 and 2)*
+
+- [ ] 03-04-PLAN.md — verify-build.mjs EXPECTED_EN_PAGES assertion + Phase 3 smoke test (NAV-03, I18N-01, I18N-02, I18N-03, I18N-04)
 
 ### Phase 4: Polish + Launch
 
@@ -111,5 +123,5 @@ Plans:
 |-------|------|----------------|--------|-----------|
 | 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
 | 2 | Spanish Content Migration | 3/5 | In Progress|  |
-| 3 | English + i18n | 0/? | Not started | — |
+| 3 | English + i18n | 0/4 | Not started | — |
 | 4 | Polish + Launch | 0/? | Not started | — |
