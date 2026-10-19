@@ -1,7 +1,8 @@
 ---
 // src/components/Breadcrumb.astro
-// Bilingual breadcrumb nav with BreadcrumbList JSON-LD in <head>.
-// JSON-LD is emitted via slot="head" — requires ContentPage to forward with <slot name="head" slot="head" />.
+// Bilingual breadcrumb nav (visible nav only).
+// BreadcrumbList JSON-LD is generated in ContentPage.astro and injected into <head> via slot forwarding.
+// (Astro does not propagate slot="head" from grandchild components — moved to layout level.)
 // Source: 04-02-PLAN.md Task 2; 04-RESEARCH.md §2; WAI-ARIA APG breadcrumb pattern.
 import { useTranslations } from '../i18n/ui';
 
@@ -48,22 +49,7 @@ const parentHref = lang === 'en' ? parent?.enPath : parent?.esPath;
 const parentLabel = parent?.label[lang] ?? breadcrumbParent;
 const homeHref = lang === 'en' ? '/en/' : '/';
 const homeLabel = t('breadcrumb.home');
-
-// JSON-LD — absolute URLs required (Google spec)
-const siteOrigin = Astro.site?.origin ?? 'https://micologiaveterinaria.ulpgc.es';
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  'itemListElement': [
-    { '@type': 'ListItem', 'position': 1, 'name': homeLabel, 'item': `${siteOrigin}${homeHref}` },
-    { '@type': 'ListItem', 'position': 2, 'name': parentLabel, 'item': `${siteOrigin}${parentHref}` },
-    { '@type': 'ListItem', 'position': 3, 'name': title },
-  ],
-};
 ---
-<!-- JSON-LD in <head> — slot="head" routes this to BaseLayout via ContentPage forwarding slot -->
-<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
-
 <!-- Visible breadcrumb nav — WAI-ARIA APG breadcrumb pattern -->
 <nav aria-label={t('breadcrumb.aria-label')} class="breadcrumb">
   <ol>
