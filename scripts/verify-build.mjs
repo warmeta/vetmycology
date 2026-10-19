@@ -169,14 +169,33 @@ if (existsSync(DIST_EN_HTML)) {
 
 // ---------------------------------------------------------------------------
 // Assertion 6: All expected content section pages declared in EXPECTED_PAGES
-// NOTE: WARN-only in Wave 0; Plan 05 Task 3 upgrades to hard fail
+// All 15 pages must exist in dist/ after Phase 2 completes
 // ---------------------------------------------------------------------------
 for (const pagePath of EXPECTED_PAGES) {
-  const fullPath = join(DIST, pagePath);
-  if (existsSync(fullPath)) {
+  const resolvedPath = join(DIST, pagePath);
+  if (existsSync(resolvedPath)) {
     pass(`dist/${pagePath} exists`);
   } else {
-    console.warn(`WARN: dist/${pagePath} not found (expected content page — not yet built)`);
+    fail(`EXPECTED_PAGES: ${pagePath} not found at ${resolvedPath}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Assertion 7: All required PDFs must exist in dist/docs/
+// ---------------------------------------------------------------------------
+const EXPECTED_PDFS = [
+  'cv-begona-acosta.pdf',
+  'malassezias.pdf',
+  'candidiasis.pdf',
+  'criptococosis.pdf',
+];
+
+for (const pdfFile of EXPECTED_PDFS) {
+  const resolvedPath = join(DIST, 'docs', pdfFile);
+  if (existsSync(resolvedPath)) {
+    pass(`dist/docs/${pdfFile} exists`);
+  } else {
+    fail(`EXPECTED_PDFS: ${pdfFile} not found at ${resolvedPath}`);
   }
 }
 
