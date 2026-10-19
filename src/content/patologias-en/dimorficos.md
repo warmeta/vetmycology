@@ -46,7 +46,7 @@ Inoculation of the fungus into the host occurs through cutaneous lesions, inhala
 
 Sporotrichosis is generally acquired through traumatisms with contaminated material (2), rarely through inhalation.
 
-Primary cutaneous sporotrichosis begins through traumatisms with contaminated material; the first lesion presents at the site of fungal entry, producing a sporotrichotic chancre (1, 7); approximately 10 days later, through interaction of the immune response, the so-called cutaneous-lymphatic complex forms; from this point, the disease tends to follow two courses: involution of lesions and spontaneous recovery (2), or alternatively, spread by continuity, producing very chronic verrucous plaques or gummatous lesions following lymphatic vessels, affecting regional lymphatics and stopping at the major lymphatic vessels (neck, axillae, groins); any state of immunosuppression can cause the disease to disseminate to other organs. (1, 2, 3, 7)
+Primary cutaneous sporotrichosis begins through traumatisms with contaminated material; the first lesion presents at the site of fungal entry, producing a sporotrichotic chancre (1, 7). Approximately 10 days later, through interaction of the immune response, the so-called cutaneous-lymphatic complex forms; from this point, the disease tends to follow two courses: involution of lesions and spontaneous recovery (2), or alternatively, spread by continuity, producing very chronic verrucous plaques or gummatous lesions following lymphatic vessels, affecting regional lymphatics and stopping at the major lymphatic vessels (neck, axillae, groins); any state of immunosuppression can cause the disease to disseminate to other organs. (1, 2, 3, 7)
 
 Pulmonary sporotrichosis begins and follows a course similar to that of tuberculosis; first the primary contact occurs, then primary pulmonary sporotrichosis presents as a pneumonic picture, being symptomatic in most cases while remaining limited; systemic dissemination is more difficult from these cases. (2)
 
@@ -54,29 +54,25 @@ Due to its polymorphism, sporotrichosis has many clinical classifications; most 
 
 **CLASSIFICATION ACCORDING TO DR. A. GONZÁLEZ OCHOA. (5)**
 
-LYMPHATIC: Gummatous, ascending from the extremities, gummatous in another region.
-
-FIXED TEGUMENTARY: Ulcerative, verrucous, plaque. Erythematous-squamous infiltrate.
-
-HAEMATOGENOUS: Gummatous disseminated throughout the integument.
-
-INTERNAL: Primary pulmonary. Secondary in lymphangitic and fixed tegumentary types concurrent with haematogenous-cutaneous type.
+- LYMPHATIC: Gummatous, ascending from the extremities; gummatous in another region.
+- FIXED TEGUMENTARY: Ulcerative, verrucous, plaque; erythematous-squamous infiltrate.
+- HAEMATOGENOUS: Gummatous disseminated throughout the integument.
+- INTERNAL: Primary pulmonary; secondary in lymphangitic and fixed tegumentary types concurrent with haematogenous-cutaneous type.
 
 **CLASSIFICATION PROPOSED BY SAUL IN 1988 (2).**
 
-CLINICAL TYPES
+Clinical types:
 
-Cutaneous-lymphatic sporotrichosis (70%) normergic or Fixed-cutaneous (25%) hyperergic.
-
-Superficial-cutaneous sporotrichosis hypoergic or Cutaneous-haematogenous (2%) anergic. Osteoarticular. Pulmonary and systemic.
+- Cutaneous-lymphatic sporotrichosis (70%) normergic, or fixed-cutaneous (25%) hyperergic.
+- Superficial-cutaneous sporotrichosis hypoergic, or cutaneous-haematogenous (2%) anergic.
+- Osteoarticular.
+- Pulmonary and systemic.
 
 **CLASSIFICATION OF CLINICAL FORMS IN DOGS (9).**
 
-CUTANEOUS FORM: Alopecic, circumscribed, plaque-like areas, non-painful.
-
-CUTANEOUS-LYMPHATIC FORM: presence of nodules on the skin of the extremities; infection extends to the regional lymph nodes. When nodes rupture, they drain a reddish-brown exudate.
-
-DISSEMINATED: Metastatic invasion of tissues outside the area of affected regional lymph nodes.
+- CUTANEOUS FORM: Alopecic, circumscribed, plaque-like areas, non-painful.
+- CUTANEOUS-LYMPHATIC FORM: presence of nodules on the skin of the extremities; infection extends to the regional lymph nodes. When nodes rupture, they drain a reddish-brown exudate.
+- DISSEMINATED: Metastatic invasion of tissues outside the area of affected regional lymph nodes.
 
 The causative agent of sporotrichosis is the fungus *Sporothrix schenckii* (7); its synonyms are *S. burmanni*, *asteroides*, *indicum* and *jeanselmi*. (5)
 
@@ -89,30 +85,19 @@ Yeasts in tissues are observed as small budding cells or in cigar shape, Gram-po
 Mycological diagnosis is the demonstration, isolation and identification of the fungus or its antibodies, and can be carried out using the following laboratory investigation resources:
 
 a) Tissue investigation in infected organic products:
-
-* Preparations stained by haematoxylin-eosin, Gomori, McManus and PAS techniques. (11)
+- Preparations stained by haematoxylin-eosin, Gomori, McManus and PAS techniques. (11)
 
 b) Culture: On Sabouraud agar medium, the presence of typical colonies with clusters of conidia constitutes the diagnosis. It must be converted to the yeast-like morphology during incubation at 37°C on blood agar or brain-heart infusion agar. (10)
 
-c) Cutaneous hypersensitivity: For the intradermal reaction, infiltrates of fungal cultures in liquid media, generally synthetic, consisting of polysaccharides extracted from fungal cells must be used. (3)
-
-Two types of sporotrichin exist: from the mycelial phase (M) and from the yeast-like form (L); the difference in use between the two is that the mycelial form will report active disease, and the yeast-like form only reports contact with the fungus. (2)
-
-The sporotrichin used for diagnostic purposes consists of glycoprotein fractions extracted from the filamentous phases and is prepared from the polysaccharide of the mycelial phase; in the case of positivity, it provides an inflammatory reaction at 18 and 72 hours, which is a specific diagnostic value. (10)
+c) Cutaneous hypersensitivity: For the intradermal reaction, infiltrates of fungal cultures in liquid media, generally synthetic, consisting of polysaccharides extracted from fungal cells must be used. (3) Two types of sporotrichin exist: from the mycelial phase (M) and from the yeast-like form (L); the difference in use between the two is that the mycelial form will report active disease, and the yeast-like form only reports contact with the fungus. (2) The sporotrichin used for diagnostic purposes consists of glycoprotein fractions extracted from the filamentous phases and is prepared from the polysaccharide of the mycelial phase; in the case of positivity, it provides an inflammatory reaction at 18 and 72 hours, which is a specific diagnostic value. (10)
 
 d) Serological tests:
-
-* Latex agglutination.
-
-* Immunodiffusion.
-
-* Immunoelectrophoresis.
-
-* Immunoelectrotransfer (Western blot).
-
-* Direct immunofluorescence.
-
-* Indirect immunofluorescence. (1, 12, 13, 16, 17)
+- Latex agglutination.
+- Immunodiffusion.
+- Immunoelectrophoresis.
+- Immunoelectrotransfer (Western blot).
+- Direct immunofluorescence.
+- Indirect immunofluorescence. (1, 12, 13, 16, 17)
 
 The techniques mentioned above are only carried out and offered at the Centers for Disease Control, Atlanta, GA. (10)
 
@@ -120,21 +105,16 @@ e) X-rays: Radiographic alterations in lungs, bones and joints are non-specific.
 
 The **differential diagnosis** of sporotrichosis includes:
 
-* Tularaemia.
-
-* Tuberculosis or lymphatic gummatous mycobacteriosis.
-
-* Verrucous, articular and osseous tuberculosis.
-
-* Cutaneous-nervous complex in tuberculoid leprosy.
-
-* Mycetomas.
-
-* Chromoblastomycosis. (1)
+- Tularaemia.
+- Tuberculosis or lymphatic gummatous mycobacteriosis.
+- Verrucous, articular and osseous tuberculosis.
+- Cutaneous-nervous complex in tuberculoid leprosy.
+- Mycetomas.
+- Chromoblastomycosis. (1)
 
 **BIBLIOGRAPHY**
 
-1.- Barsabti JA. Sporotrichosis in Green CE. Clinical microbiology and infectious diseases of the dog and cat, WB Saunders. Philadelphia, 1984.
+1.- Barsabti JA. Sporotrichosis in Green CE. Clinical microbiology and infectious diseases of the dog and cat. WB Saunders. Philadelphia, 1984.
 
 2.- Bonifaz A. Micología médica básica. Francisco Méndez Cervantes; 167 p. Mexico, 1991.
 

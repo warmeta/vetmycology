@@ -12,31 +12,26 @@ Pathology caused by the genus *Candida*, exerting its pathogenic action mainly o
 
 The animal species mainly affected are: bovines, pigs, poultry, etc. (1).
 
-BOVINE CANDIDIASIS
+### Bovine candidiasis
 
 Candida species preferentially colonize mucous membranes; the most frequent conditions they produce are: soor of the digestive tract, pneumonias, abortions, mastitis and diarrhea (1).
 
-ETIOLOGY
+### Etiology
 
 Different species of the genus *Candida* (24) — morphological scheme of various *Candida* spp.
 
-EPIDEMIOLOGY
+### Epidemiology
 
 Predisposing factors are those previously mentioned in the generalities of systemic mycoses (1).
 
-CLINICAL SIGNS (1)
+### Clinical signs (1)
 
 Acute yeast mastitis is characterized by:
 
-Mammary inflammation: affected quarter increased in volume, tense, and of gummy consistency.
+- Mammary inflammation: affected quarter increased in volume, tense, and of gummy consistency.
+- General disturbance and fever (42°C).
 
-General disturbance and fever (42°C).
-
-In this way the disease becomes chronic.
-
-In the acute phase secretion is scant, grey-yellowish, showing mucous clumps.
-
-In the chronic phase, milk returns and mucous floccules appear. (17) isolates *Candida maltosa* as the etiological agent of these chronic mastitis cases.
+In this way the disease becomes chronic. In the acute phase secretion is scant, grey-yellowish, showing mucous clumps. In the chronic phase, milk returns and mucous floccules appear. (17) isolates *Candida maltosa* as the etiological agent of these chronic mastitis cases.
 
 Spontaneous recovery takes place within three weeks.
 
@@ -44,7 +39,7 @@ Spontaneous recovery takes place within three weeks.
 
 (14) has observed that "candidiasis" in other ruminants such as goats can cause abortions.
 
-DIAGNOSIS
+### Diagnosis
 
 Direct examination of samples reveals isolated yeasts, sometimes budding with short pseudohyphae bearing verticils of blastospores, which stain with Giemsa or Gram (24).
 
@@ -54,43 +49,35 @@ Colonies show rapid growth at 28°C, initially smooth and later rough (24).
 
 Identification: by filamentation in inactivated serum at 37°C for 3–4 hours: *C. albicans*. Formation of chlamydospores and pseudomycelium. Sugar fermentation. Auxanogram. Urease test (24).
 
-TREATMENT
+### Treatment
 
-Etiological treatment: Antifungals via canal route.
+- Etiological treatment: antifungals via canal route.
+- Symptomatic treatment: anti-inflammatories, frequent milking (1).
 
-Symptomatic treatment: anti-inflammatories, frequent milking (1).
-
-PORCINE CANDIDIASIS (1)
+### Porcine candidiasis (1)
 
 The pig is the animal that has the greatest quantity of yeasts per gram of feces (1).
 
-Few Candida species are capable of being pathogenic.
-
-Candida infections in pigs are normally secondary and endogenous.
+Few *Candida* species are capable of being pathogenic. Candida infections in pigs are normally secondary and endogenous.
 
 Candidiasis of the upper digestive tract is usually caused by *C. albicans* and infections of the lower digestive tract by *C. krusei*.
 
-In artificially fed piglets, multiplication of Candida is predisposed by:
+In artificially fed piglets, multiplication of *Candida* is predisposed, which causes:
 
--vitamin deficiency
+- Vitamin deficiency.
+- Reduction of defenses and secondary bacterial infections.
 
--reduction of defenses and secondary bacterial infections.
+At the intestinal level the only observable finding is a pseudomembranous lining. In sows during the rearing period, diarrhea may occur.
 
-At the intestinal level the only observable finding is a pseudomembranous lining.
+### Treatment
 
-In sows during the rearing period, diarrhea may occur.
-
-TREATMENT
-
-Nystatin
-
-Amphotericin B
-
-Trichomycin
+- Nystatin
+- Amphotericin B
+- Trichomycin
 
 This treatment is not justified for economic reasons.
 
-AVIAN CANDIDIASIS (1)
+### Avian candidiasis (1)
 
 Notably *C. albicans*. Although it is also true that *Candida albicans* appears to be normally found in healthy crops according to (6), who isolates it from 80% of animals.
 
@@ -100,21 +87,17 @@ As a consequence of the pathogenic action of this organism, alterations occur in
 
 Mortality during the first month of life can reach 100%.
 
-TREATMENT
+### Treatment
 
--avoid predisposing factors
-
--vitamin supplementation
-
--symptomatic therapy
+- Avoid predisposing factors.
+- Vitamin supplementation.
+- Symptomatic therapy.
 
 **TYPHLOHEPATITIS** (1)
 
 Avian candidiasis caused by *C. albicans*. In the affected organs, vegetative forms of yeast development appear, surrounded by macrophages.
 
-All birds can be affected but especially **turkeys**.
-
-Contagion is oral.
+All birds can be affected but especially **turkeys**. Contagion is oral.
 
 Clinically there is adynamia and foul-smelling orange diarrhea.
 
@@ -140,17 +123,13 @@ The causative agent is frequently found in soil, often in bird droppings, withou
 
 In dogs, cats and humans, nervous manifestations frequently occur, with other organs subsequently affected. In bovines it mainly presents as mastitis (3, 1).
 
-In equines with nasal granuloma that may extend to lungs and viscera (3). (8) refers to *C. neoformans* in goats, in which varied clinical signs are produced depending on localization and severity of infection; lesions observed in: trachea, nasal passages, skin, chronic hepatitis (7).
+In equines, nasal granuloma occurs that may extend to lungs and viscera (3). (8) refers to *C. neoformans* in goats, in which varied clinical signs are produced depending on localization and severity of infection; lesions observed in: trachea, nasal passages, skin, chronic hepatitis (7).
 
-DIAGNOSIS
+### Diagnosis
 
-**Direct examination: of fresh preparations of cerebrospinal fluid or pus where yeast-like cells can be seen.**
+**Direct examination:** of fresh preparations of cerebrospinal fluid or pus where yeast-like cells can be seen. Samples can also be emulsified in India ink or nigrosin, or stained with Gram (+) (3).
 
-Samples can also be emulsified in India ink or nigrosin, or stained with Gram (+) (3).
-
-**Isolation and culture:** Blood agar and Sabouraud agar are used for culture (3); (7) uses Sabouraud Maltose agar with chloromycetin. Incubation at 37°C (7) or at 25 and 37°C for no more than one week (3, 7). Whitish to slightly yellowish colonies appear, moist and shiny, of mucous consistency (7).
-
-With continued incubation the color varies from cream to brownish (3). Most saprophytic strains of cryptococcus do not grow at 37°C (3).
+**Isolation and culture:** Blood agar and Sabouraud agar are used for culture (3); (7) uses Sabouraud Maltose agar with chloromycetin. Incubation at 37°C (7) or at 25 and 37°C for no more than one week (3, 7). Whitish to slightly yellowish colonies appear, moist and shiny, of mucous consistency (7). With continued incubation the color varies from cream to brownish (3). Most saprophytic strains of cryptococcus do not grow at 37°C (3).
 
 **Microscopically:** characterized by the formation of blastospores of 4–7 microns and spheroidal budding cells of 5–20 microns (7).
 
@@ -163,15 +142,12 @@ True yeast species of *Saccharomyces* can be distinguished from *Cryptococcus* b
 According to the Biomerieux catalogue for isolation and identification of Candida, the biochemical characteristics of *C. neoformans* are:
 
 - Does not grow on Sabouraud Chloramphenicol Actidione, indicating sensitivity to Actidione.
-
 - Does not ferment the following sugars: glucose, galactose, maltose, lactose, trehalose, raffinose.
-
-- The "Auxanogram" is also used, in which *C. neoformans* behaves as follows: Glucose, galactose, maltose and sucrose (+); lactose (−), trehalose and raffinose (+). This test demonstrates growth or inhibition of the fungus in the presence of the aforementioned sugars.
+- The "Auxanogram" is also used, in which *C. neoformans* behaves as follows: glucose, galactose, maltose and sucrose (+); lactose (−), trehalose and raffinose (+). This test demonstrates growth or inhibition of the fungus in the presence of the aforementioned sugars.
 
 Animal inoculation techniques can also be used:
 
-- Inoculation of 1 ml intraperitoneally in mice (3, 4, 7)
-
+- Inoculation of 1 ml intraperitoneally in mice (3, 4, 7).
 - Inoculation of 0.02 ml intracerebrally in mice (4). The inoculum is prepared by making a dense dilution of *C. neoformans* grown in Sabouraud in saline solution (3). Gelatinous masses form in the abdominal cavity associated with other lesions containing encapsulated cells (4, 7). Intracerebral inoculation causes death in 10 days. Rats and guinea pigs are much less sensitive (7).
 
 **Serology**
@@ -180,9 +156,8 @@ The latex particle agglutination test is useful for identifying the microorganis
 
 **TREATMENT** (3)
 
-Amphotericin B
-
-Imidazole derivatives (promising).
+- Amphotericin B
+- Imidazole derivatives (promising).
 
 ## Malassezia Pathologies
 
