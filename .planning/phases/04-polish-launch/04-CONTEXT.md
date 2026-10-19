@@ -27,9 +27,9 @@ This phase does not add new content, restructure navigation, or change any exist
 - **D-07:** BreadcrumbList structured data uses `<script type="application/ld+json">` JSON-LD injected into `<head>` via a `<slot name="head">` in BaseLayout. The Breadcrumb component emits both the visible `<nav>` element and the JSON-LD.
 
 ### Deploy Pipeline
-- **D-08:** GitHub Actions workflow at `.github/workflows/deploy.yml` triggers on push to `main`. Steps: checkout → setup Node 20 → `npm ci` → `npm run build` → deploy with `SamKirkland/FTP-Deploy-Action`.
-- **D-09:** FTP target: `217.116.2.102`, server directory `/httpdocs/`, username `micologiavet`. Password stored as GitHub Actions secret `FTP_PASSWORD`. Host stored as secret `FTP_SERVER` (value `217.116.2.102`), username as `FTP_USERNAME`.
-- **D-10:** The workflow deploys the contents of `dist/` (not `dist/` itself) to `/httpdocs/` so that `dist/index.html` maps to `https://micologiaveterinaria.ulpgc.es/`.
+- **D-08:** GitHub Actions workflow at `.github/workflows/deploy.yml` triggers on push to `main`. Steps: checkout → setup Node 22 → `npm ci` → `npm run build` → assemble `deploy-staging/` → force-push to `prod` branch via `JamesIves/github-pages-deploy-action@v4`. No FTP, no server credentials in CI.
+- **D-09:** Plesk Git extension (one-time manual setup): pull `prod` branch into `/httpdocs/`, document root changed to `/httpdocs/public/`. GitHub webhook triggers Plesk pull on push to `prod`. No credentials leave the server — Plesk clones over HTTPS.
+- **D-10:** `prod` branch structure: `public/` (all `dist/` contents) + `.htaccess` at root (denies `/.git/` access). Document root `/httpdocs/public/` means `.git/` is never under the served path.
 
 ### Claude's Discretion
 - **A11y audit approach**: Run Lighthouse audit (local or CI) and manually verify FOUND-05 checklist: skip link, `<html lang>`, semantic landmarks, `<h1>→<h2>→<h3>` hierarchy on all pages. Fix any issues found. No need for a full professional audit for v1.
