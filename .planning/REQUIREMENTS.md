@@ -55,7 +55,7 @@
 - [ ] **I18N-02**: All 14 content sections have English translations (AI-assisted first pass, reviewed and committed by developer)
 - [ ] **I18N-03**: Every page includes correct `hreflang` link elements pointing to the ES and EN versions (including `x-default` pointing to the Spanish version)
 - [ ] **I18N-04**: All UI strings (navigation labels, footer text, language switcher aria-labels, breadcrumb labels) are translated and display in the correct language on each page
-- [ ] **I18N-05**: Every page displays a breadcrumb trail (e.g., `Inicio > Patologías > Levaduras`) in the page locale, using structured data markup (`BreadcrumbList`)
+- [x] **I18N-05**: Every page displays a breadcrumb trail (e.g., `Inicio > Patologías > Levaduras`) in the page locale, using structured data markup (`BreadcrumbList`)
 
 ---
 
@@ -121,4 +121,4 @@
 | I18N-02 | Phase 3 | Pending |
 | I18N-03 | Phase 3 | Pending |
 | I18N-04 | Phase 3 | Pending |
-| I18N-05 | Phase 4 | Pending |
+| I18N-05 | Phase 4 | Complete |
