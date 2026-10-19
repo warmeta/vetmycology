@@ -1,0 +1,11 @@
+---
+import { getEntry, render } from 'astro:content';
+import ContentPage from '../../../layouts/ContentPage.astro';
+
+const entry = await getEntry('recursos-en', 'bibliografia');
+if (!entry) throw new Error('Entry not found: recursos-en/bibliografia');
+const { Content } = await render(entry);
+---
+<ContentPage title={entry.data.title} description={entry.data.description} lang={entry.data.lang}>
+  <Content />
+</ContentPage>

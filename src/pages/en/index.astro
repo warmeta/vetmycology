@@ -1,47 +1,120 @@
 ---
-// src/pages/en/index.astro — English page at /en/ (prefixDefaultLocale: false, en under /en/)
-const pageTitle = 'Veterinary Mycology — Walking Skeleton';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const pageTitle = 'Veterinary Mycology Group · ULPGC';
+const pageDescription = 'Research group in veterinary mycology at the Faculty of Veterinary Medicine, Universidad de Las Palmas de Gran Canaria.';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <main>
-      <h1>Veterinary Mycology — walking skeleton</h1>
-      <p>
-        This is the walking skeleton test page for the ULPGC Veterinary Mycology Group website.
-        It confirms that the build pipeline produces valid UTF-8 HTML with Spanish special
-        characters (ñ, á, é, ü) rendered correctly, and that the English route resolves at
-        <code>/en/</code>.
-      </p>
-      <p>
-        The full site will include 14 content sections covering veterinary mycology, fungal
-        pathologies, laboratory diagnostics, and specialist bibliography.
-      </p>
-    </main>
-  </body>
-</html>
+<BaseLayout title={pageTitle} description={pageDescription} lang="en">
+  <main id="main-content" class="home-main">
+    <section class="hero">
+      <h1>VETERINARY MYCOLOGY GROUP</h1>
+      <p class="hero-affiliation">Faculty of Veterinary Medicine · Universidad de Las Palmas de Gran Canaria</p>
+    </section>
+
+    <section class="institutional-logos">
+      <img src="/images/logos/ulpgc.jpg" alt="Universidad de Las Palmas de Gran Canaria" />
+      <img src="/images/logos/iusa.jpg" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
+    </section>
+
+    <section class="director">
+      <p>Led by <a href="/docs/cv-begona-acosta.pdf">Dr. Begoña Acosta Hernández</a></p>
+    </section>
+
+    <section class="photo-strip">
+      <img src="/images/home/microscopy-1.jpg" alt="Scientific photograph of the veterinary mycology research group" />
+      <img src="/images/home/culture-2.jpg" alt="Fungal culture in the veterinary mycology laboratory" />
+      <img src="/images/home/pathology-3.jpg" alt="Pathology caused by fungi in animals" />
+    </section>
+
+    <p class="visually-hidden" lang="en">Veterinary Mycology Group — ULPGC</p>
+  </main>
+</BaseLayout>
 
 <style>
-  body {
-    font-family:
-      system-ui,
-      -apple-system,
-      sans-serif;
-    max-width: 800px;
+  .home-main {
+    max-width: 1024px;
     margin: 0 auto;
-    padding: 2rem 1rem;
-    line-height: 1.6;
-    color: #1a1a1a;
+    padding: var(--space-3xl) var(--space-lg);
   }
 
-  h1 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+  .hero {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero h1 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  @media (max-width: 767px) {
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .hero-affiliation {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+  }
+
+  .institutional-logos {
+    display: flex;
+    gap: var(--space-xl);
+    justify-content: center;
+    align-items: center;
+    margin: var(--space-xl) 0;
+  }
+
+  .institutional-logos img {
+    max-height: 80px;
+    width: auto;
+  }
+
+  .director {
+    text-align: center;
+    margin: var(--space-xl) auto;
+    max-width: 740px;
+  }
+
+  .director a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .photo-strip {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .photo-strip img {
+    flex: 1;
+    max-width: 33%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  @media (max-width: 767px) {
+    .photo-strip {
+      flex-direction: column;
+    }
+
+    .photo-strip img {
+      max-width: 100%;
+    }
+  }
+
+  .visually-hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 </style>
