@@ -13,6 +13,7 @@ const contentSchema = z.object({
   description: z.string().optional(),
   toc: z.boolean().default(false),
   lang: z.enum(['es', 'en']).default('es'),
+  breadcrumb_parent: z.string().optional(),
 });
 
 const micologia = defineCollection({

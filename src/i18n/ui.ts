@@ -36,6 +36,8 @@ export const ui = {
     'lang.current.en': 'Idioma: Inglés',
     'lang.switch.es': 'Cambiar a español',
     'lang.switch.en': 'Switch to English',
+    'breadcrumb.home': 'Inicio',
+    'breadcrumb.aria-label': 'Ruta de navegación',
   },
   en: {
     'skip.link': 'Skip to main content',
@@ -69,6 +71,8 @@ export const ui = {
     'lang.current.en': 'Language: English',
     'lang.switch.es': 'Cambiar a español',
     'lang.switch.en': 'Switch to English',
+    'breadcrumb.home': 'Home',
+    'breadcrumb.aria-label': 'Breadcrumb navigation',
   },
 } as const;
 
