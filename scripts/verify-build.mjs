@@ -46,10 +46,32 @@ const EXPECTED_PAGES = [
 ];
 
 // ---------------------------------------------------------------------------
+// Expected EN pages — all 15 EN content section index.html files + home
+// (mirrors EXPECTED_PAGES but under en/ — added in Phase 3)
+// ---------------------------------------------------------------------------
+const EXPECTED_EN_PAGES = [
+  'en/index.html',
+  'en/micologia/generalidades/index.html',
+  'en/micologia/grupo-de-trabajo/index.html',
+  'en/micologia/colreptiles/index.html',
+  'en/patologias/levaduras/index.html',
+  'en/patologias/filamentosos/index.html',
+  'en/patologias/dimorficos/index.html',
+  'en/patologias/micosis-peces/index.html',
+  'en/investigacion/articulos-congresos/index.html',
+  'en/investigacion/articulos-interesantes/index.html',
+  'en/laboratorio/index.html',
+  'en/recursos/archivo-imagenes/index.html',
+  'en/recursos/links-micologia/index.html',
+  'en/recursos/links-revistas/index.html',
+  'en/recursos/bibliografia/index.html',
+];
+
+// ---------------------------------------------------------------------------
 // Expected content literals (must match exactly what the build produces)
 // ---------------------------------------------------------------------------
 const SPANISH_LITERAL = 'Micología Veterinaria — ñoño, cándida, pérez';
-const ENGLISH_LITERAL = 'Veterinary Mycology — walking skeleton';
+const ENGLISH_LITERAL = 'Veterinary Mycology Group — ULPGC';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -196,6 +218,19 @@ for (const pdfFile of EXPECTED_PDFS) {
     pass(`dist/docs/${pdfFile} exists`);
   } else {
     fail(`EXPECTED_PDFS: ${pdfFile} not found at ${resolvedPath}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Assertion 8: All expected EN content pages must exist in dist/en/
+// (Phase 3 complete — all 15 EN pages required as hard failures)
+// ---------------------------------------------------------------------------
+for (const pagePath of EXPECTED_EN_PAGES) {
+  const resolvedPath = join(DIST, pagePath);
+  if (existsSync(resolvedPath)) {
+    pass(`dist/${pagePath} exists`);
+  } else {
+    fail(`EXPECTED_EN_PAGES: ${pagePath} not found at ${resolvedPath}`);
   }
 }
 
