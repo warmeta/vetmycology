@@ -16,8 +16,28 @@ const pageDescription = 'Grupo de investigación en micología veterinaria de la
       <img src="/images/logos/iusa.png" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
     </section>
 
-    <section class="director">
-      <p>Dirigido por <a href="/docs/cv-begona-acosta.pdf">Dra. Begoña Acosta Hernández</a></p>
+    <section class="intro">
+      <p>Estudiamos las enfermedades producidas por hongos en animales domésticos, reptiles y peces. Nuestro trabajo integra el diagnóstico micológico clínico con la investigación sobre epidemiología, patogenia y tratamiento de las principales micosis veterinarias.</p>
+      <p>El grupo está dirigido por <a href="/docs/cv-begona-acosta.pdf">Dra. Begoña Acosta Hernández</a> y forma parte del Instituto Universitario de Sanidad Animal y Seguridad Alimentaria (IUSA) de la ULPGC.</p>
+    </section>
+
+    <section class="nav-cards" aria-label="Secciones principales">
+      <a href="/micologia/generalidades/" class="nav-card">
+        <h2>Micología</h2>
+        <p>Biología y características generales de los hongos patógenos de interés veterinario.</p>
+      </a>
+      <a href="/patologias/levaduras/" class="nav-card">
+        <h2>Patologías</h2>
+        <p>Candidiasis, criptococosis, aspergilosis y otras micosis en animales domésticos y silvestres.</p>
+      </a>
+      <a href="/laboratorio/" class="nav-card">
+        <h2>Laboratorio</h2>
+        <p>Protocolos y técnicas de diagnóstico micológico empleados en el laboratorio del grupo.</p>
+      </a>
+      <a href="/investigacion/articulos-congresos/" class="nav-card">
+        <h2>Investigación</h2>
+        <p>Publicaciones científicas, comunicaciones en congresos y artículos de referencia.</p>
+      </a>
     </section>
 
     <section class="photo-strip">
@@ -75,21 +95,70 @@ const pageDescription = 'Grupo de investigación en micología veterinaria de la
     width: auto;
   }
 
-  .director {
-    text-align: center;
-    margin: var(--space-xl) auto;
+  .intro {
     max-width: 740px;
+    margin: var(--space-2xl) auto;
+    text-align: center;
   }
 
-  .director a {
+  .intro p {
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+  }
+
+  .intro a {
     color: var(--color-accent);
     text-decoration: underline;
+  }
+
+  .nav-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin: var(--space-2xl) 0;
+  }
+
+  @media (max-width: 767px) {
+    .nav-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .nav-card {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text);
+    background: var(--color-surface-subtle);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .nav-card:hover,
+  .nav-card:focus-visible {
+    border-color: var(--color-accent);
+    background: #f0f7f4;
+    color: var(--color-text);
+  }
+
+  .nav-card h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-accent);
+  }
+
+  .nav-card p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
   }
 
   .photo-strip {
     display: flex;
     gap: var(--space-md);
-    margin-top: var(--space-xl);
+    margin-top: var(--space-2xl);
   }
 
   .photo-strip img {

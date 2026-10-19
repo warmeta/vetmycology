@@ -16,8 +16,28 @@ const pageDescription = 'Research group in veterinary mycology at the Faculty of
       <img src="/images/logos/iusa.png" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
     </section>
 
-    <section class="director">
-      <p>Led by <a href="/docs/cv-begona-acosta.pdf">Dr. Begoña Acosta Hernández</a></p>
+    <section class="intro">
+      <p>We study fungal diseases in domestic animals, reptiles, and fish. Our work integrates clinical mycological diagnosis with research into the epidemiology, pathogenesis, and treatment of the main veterinary mycoses.</p>
+      <p>The group is led by <a href="/docs/cv-begona-acosta.pdf">Dr. Begoña Acosta Hernández</a> and is part of the University Institute for Animal Health and Food Safety (IUSA) at ULPGC.</p>
+    </section>
+
+    <section class="nav-cards" aria-label="Main sections">
+      <a href="/en/micologia/generalidades/" class="nav-card">
+        <h2>Mycology</h2>
+        <p>Biology and general characteristics of fungal pathogens of veterinary interest.</p>
+      </a>
+      <a href="/en/patologias/levaduras/" class="nav-card">
+        <h2>Pathologies</h2>
+        <p>Candidiasis, cryptococcosis, aspergillosis and other mycoses in domestic and wild animals.</p>
+      </a>
+      <a href="/en/laboratorio/" class="nav-card">
+        <h2>Laboratory</h2>
+        <p>Mycological diagnostic protocols and techniques used in the group's laboratory.</p>
+      </a>
+      <a href="/en/investigacion/articulos-congresos/" class="nav-card">
+        <h2>Research</h2>
+        <p>Scientific publications, conference communications, and reference articles.</p>
+      </a>
     </section>
 
     <section class="photo-strip">
@@ -75,21 +95,70 @@ const pageDescription = 'Research group in veterinary mycology at the Faculty of
     width: auto;
   }
 
-  .director {
-    text-align: center;
-    margin: var(--space-xl) auto;
+  .intro {
     max-width: 740px;
+    margin: var(--space-2xl) auto;
+    text-align: center;
   }
 
-  .director a {
+  .intro p {
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+  }
+
+  .intro a {
     color: var(--color-accent);
     text-decoration: underline;
+  }
+
+  .nav-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin: var(--space-2xl) 0;
+  }
+
+  @media (max-width: 767px) {
+    .nav-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .nav-card {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text);
+    background: var(--color-surface-subtle);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .nav-card:hover,
+  .nav-card:focus-visible {
+    border-color: var(--color-accent);
+    background: #f0f7f4;
+    color: var(--color-text);
+  }
+
+  .nav-card h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-accent);
+  }
+
+  .nav-card p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
   }
 
   .photo-strip {
     display: flex;
     gap: var(--space-md);
-    margin-top: var(--space-xl);
+    margin-top: var(--space-2xl);
   }
 
   .photo-strip img {
