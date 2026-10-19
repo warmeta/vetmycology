@@ -3,6 +3,7 @@ title: "Links de Micología"
 description: "Enlaces externos de interés en micología: sociedades, bases de datos y recursos científicos."
 toc: false
 lang: "es"
+breadcrumb_parent: "Recursos"
 ---
 
 **Links de micología** <http://www.mycology.adelaide.edu.au/>

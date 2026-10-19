@@ -3,6 +3,7 @@ title: "Patologías por Hongos Filamentosos"
 description: "Dermatofitosis y Aspergilosis en animales domésticos: etiología, diagnóstico y tratamiento"
 toc: true
 lang: "es"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Dermatofitosis

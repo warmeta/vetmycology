@@ -3,6 +3,7 @@ title: "Artículos Interesantes"
 description: "Selección de artículos científicos de interés en micología veterinaria."
 toc: false
 lang: "es"
+breadcrumb_parent: "Investigación"
 ---
 
 **Artículos interesantes**

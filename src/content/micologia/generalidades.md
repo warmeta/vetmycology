@@ -3,6 +3,7 @@ title: "Generalidades de los Hongos Patógenos"
 description: "Introducción a la micología veterinaria: clasificación, reproducción y técnicas diagnósticas de hongos patógenos."
 toc: false
 lang: "es"
+breadcrumb_parent: "Micología"
 ---
 
 ## GENERALIDADES DE LOS HONGOS PATÓGENOS Y PRINCIPALES TÉCNICAS MICOLÓGICAS

@@ -3,6 +3,7 @@ title: "Links de Revistas de Micología"
 description: "Revistas científicas especializadas en micología y enfermedades fúngicas."
 toc: false
 lang: "es"
+breadcrumb_parent: "Recursos"
 ---
 
 **Links revistas de micología** <http://www.isham.org/about/Journal.html>

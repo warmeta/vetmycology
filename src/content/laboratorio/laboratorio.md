@@ -3,13 +3,14 @@ title: "Laboratorio de Diagnóstico Micológico"
 description: "Diagnóstico micológico de criptococosis, candidiasis, patologías por Malassezia, dermatofitosis y otras micosis en el Laboratorio de Micología Veterinaria"
 toc: false
 lang: "es"
+breadcrumb_parent: "Laboratorio"
 ---
 
-ENFERMEDADES INFECCIOSAS
+## ENFERMEDADES INFECCIOSAS
 
-DIAGNÓSTICO MICOLÓGICO
+## DIAGNÓSTICO MICOLÓGICO
 
-DIAGNÓSTICO DE CRIPTOCOCOSIS
+## DIAGNÓSTICO DE CRIPTOCOCOSIS
 
 La criptococosis es una enfermedad causada por *Cryptococcus neoformans*, el cual tiene una distribución mundial. La enfermedad cursa de forma subaguda a crónica,
 

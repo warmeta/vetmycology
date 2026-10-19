@@ -3,6 +3,7 @@ title: "Patologías por Levaduras"
 description: "Candidiasis animal, Criptococosis y Patologías por Malassezias en animales domésticos"
 toc: true
 lang: "es"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Candidiasis animal

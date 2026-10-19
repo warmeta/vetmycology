@@ -3,6 +3,7 @@ title: "Artículos y Congresos"
 description: "Publicaciones en revistas internacionales, comunicaciones a congresos, tesis doctorales y proyectos de investigación del Grupo de Micología Veterinaria"
 toc: false
 lang: "es"
+breadcrumb_parent: "Investigación"
 ---
 
 **Publicaciones en revistas internacionales**

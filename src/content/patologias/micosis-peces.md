@@ -3,6 +3,7 @@ title: "Principales Enfermedades Fúngicas en Peces"
 description: "Principales enfermedades producidas por chromistas y hongos en peces: saprolegniasis, micosis sistémicas y afanomicosis"
 toc: false
 lang: "es"
+breadcrumb_parent: "Patologías"
 ---
 
 **PRINCIPALES ENFERMEDADES PRODUCIDAS POR CHROMISTAS Y HONGOS

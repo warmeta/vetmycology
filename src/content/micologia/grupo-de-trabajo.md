@@ -3,6 +3,7 @@ title: "Grupo de Trabajo"
 description: "Miembros del grupo de investigación en micología veterinaria de la Facultad de Veterinaria de la ULPGC."
 toc: false
 lang: "es"
+breadcrumb_parent: "Micología"
 ---
 
 ## Grupo de Micología Veterinaria · ULPGC

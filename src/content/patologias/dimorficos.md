@@ -3,6 +3,7 @@ title: "Patologías por Hongos Dimórficos"
 description: "Histoplasmosis y Esporotricosis en animales domésticos: etiología, diagnóstico y tratamiento"
 toc: true
 lang: "es"
+breadcrumb_parent: "Patologías"
 ---
 
 ## Histoplasmosis

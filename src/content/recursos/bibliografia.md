@@ -3,6 +3,7 @@ title: "Bibliografía"
 description: "Bibliografía de referencia en micología veterinaria utilizada por el grupo de investigación."
 toc: false
 lang: "es"
+breadcrumb_parent: "Recursos"
 ---
 
 ## BIBLIOGRAFÍA

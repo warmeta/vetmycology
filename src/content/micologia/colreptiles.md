@@ -3,6 +3,7 @@ title: "Colaboración con Reptiles"
 description: "Proyectos de colaboración en micología de reptiles del grupo de micología veterinaria."
 toc: false
 lang: "es"
+breadcrumb_parent: "Micología"
 ---
 
 **Web de Reptiles**
