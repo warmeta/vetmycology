@@ -279,6 +279,60 @@ for (const pagePath of EXPECTED_EN_BREADCRUMB_PAGES) {
 }
 
 // ---------------------------------------------------------------------------
+// Assertion 11: WCAG 2.1 AA structural baseline — skip link, tabindex, laboratorio h2
+// (added in Plan 04-04 — regression guard for FOUND-05)
+// ---------------------------------------------------------------------------
+
+// 11a. Skip link present on home page and a content page sample
+{
+  const skipLinkPages = ['index.html', 'micologia/generalidades/index.html', 'en/micologia/generalidades/index.html'];
+  for (const pagePath of skipLinkPages) {
+    const resolvedPath = join(DIST, pagePath);
+    try {
+      const html = readStrictUtf8(resolvedPath);
+      if (html.includes('skip-link')) {
+        pass(`WCAG skip-link present in dist/${pagePath}`);
+      } else {
+        fail(`WCAG skip-link MISSING in dist/${pagePath}`);
+      }
+    } catch (err) {
+      fail(`Could not read dist/${pagePath}: ${err.message}`);
+    }
+  }
+}
+
+// 11b. <main> has tabindex="-1" for skip-link focus target (Plan 04-02 fix)
+{
+  const tabindexPage = join(DIST, 'micologia/generalidades/index.html');
+  try {
+    const html = readStrictUtf8(tabindexPage);
+    if (html.includes('tabindex="-1"')) {
+      pass('WCAG <main tabindex="-1"> present in dist/micologia/generalidades/index.html');
+    } else {
+      fail('WCAG <main tabindex="-1"> MISSING in dist/micologia/generalidades/index.html');
+    }
+  } catch (err) {
+    fail(`Could not read tabindex check file: ${err.message}`);
+  }
+}
+
+// 11c. laboratorio/index.html has >= 3 <h2 elements (heading hierarchy fix from Plan 04-03)
+{
+  const labPage = join(DIST, 'laboratorio/index.html');
+  try {
+    const html = readStrictUtf8(labPage);
+    const h2count = (html.match(/<h2/g) || []).length;
+    if (h2count >= 3) {
+      pass(`WCAG laboratorio heading hierarchy: ${h2count} <h2> elements found (expected >= 3)`);
+    } else {
+      fail(`WCAG laboratorio heading hierarchy: only ${h2count} <h2> elements found (expected >= 3)`);
+    }
+  } catch (err) {
+    fail(`Could not read dist/laboratorio/index.html: ${err.message}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Summary
 // ---------------------------------------------------------------------------
 console.log('');
