@@ -75,7 +75,7 @@ const navGroups: NavGroup[] = [
       <li class="nav-group">
         {group.children ? (
           <>
-            <button type="button" class="nav-group-label">{group.label}</button>
+            <button type="button" class="nav-group-label" aria-haspopup="true">{group.label} <span aria-hidden="true" class="dropdown-arrow">▾</span></button>
             <ul class="nav-dropdown">
               {group.children.map(child => (
                 <li>
@@ -136,12 +136,24 @@ const navGroups: NavGroup[] = [
     font-family: var(--font-body);
     font-size: var(--font-size-body);
     white-space: nowrap;
-    /* button reset */
+  }
+
+  a.nav-group-label {
+    cursor: pointer;
+  }
+
+  button.nav-group-label {
     background: none;
     border-top: none;
     border-right: none;
     border-bottom: none;
     cursor: default;
+  }
+
+  .dropdown-arrow {
+    font-size: 0.75em;
+    margin-left: var(--space-xs);
+    opacity: 0.75;
   }
 
   .nav-group:hover .nav-group-label,
