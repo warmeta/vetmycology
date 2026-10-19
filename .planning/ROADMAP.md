@@ -9,8 +9,8 @@
 ## Phases
 
 - [x] **Phase 1: Foundation + Pipeline** — Astro scaffolded, i18n locked, test page live on ULPGC server (completed 2026-10-18)
-- [ ] **Phase 2: Spanish Content Migration** — All 14 sections live in Spanish with full layout and media
-- [ ] **Phase 3: English + i18n** — Full bilingual site with language switcher and hreflang
+- [x] **Phase 2: Spanish Content Migration** — All 14 sections live in Spanish with full layout and media (completed 2026-10-19)
+- [x] **Phase 3: English + i18n** — Full bilingual site with language switcher and hreflang (completed 2026-10-19)
 - [ ] **Phase 4: Polish + Launch** — Accessibility audit, breadcrumbs, production smoke-test
 
 ---
@@ -90,16 +90,16 @@ Plans:
 Plans:
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — i18n infrastructure: ui.ts translation dictionary, 5 EN content collections, LangSwitcher component, BaseLayout hreflang, Header/Footer/TableOfContents/TopNav/MobileNav locale-aware updates (NAV-03, I18N-03, I18N-04)
+- [x] 03-01-PLAN.md — i18n infrastructure: ui.ts translation dictionary, 5 EN content collections, LangSwitcher component, BaseLayout hreflang, Header/Footer/TableOfContents/TopNav/MobileNav locale-aware updates (NAV-03, I18N-03, I18N-04)
 
 **Wave 2** *(parallel; blocked on Wave 1)*
 
-- [ ] 03-02-PLAN.md — 10 EN non-TOC markdown translations + 11 EN Astro pages (home + 10 content sections) (I18N-01, I18N-02)
-- [ ] 03-03-PLAN.md — 3 EN TOC pathology pages (Sätteri ID verification) + EN image archive page with English alt texts (I18N-01, I18N-02)
+- [x] 03-02-PLAN.md — 10 EN non-TOC markdown translations + 11 EN Astro pages (home + 10 content sections) (I18N-01, I18N-02)
+- [x] 03-03-PLAN.md — 3 EN TOC pathology pages (Sätteri ID verification) + EN image archive page with English alt texts (I18N-01, I18N-02)
 
 **Wave 3** *(blocked on Waves 1 and 2)*
 
-- [ ] 03-04-PLAN.md — verify-build.mjs EXPECTED_EN_PAGES assertion + Phase 3 smoke test (NAV-03, I18N-01, I18N-02, I18N-03, I18N-04)
+- [x] 03-04-PLAN.md — verify-build.mjs EXPECTED_EN_PAGES assertion + Phase 3 smoke test (NAV-03, I18N-01, I18N-02, I18N-03, I18N-04)
 
 ### Phase 4: Polish + Launch
 
@@ -122,6 +122,6 @@ Plans:
 | Phase | Name | Plans Complete | Status | Completed |
 |-------|------|----------------|--------|-----------|
 | 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
-| 2 | Spanish Content Migration | 3/5 | In Progress|  |
-| 3 | English + i18n | 0/4 | Not started | — |
+| 2 | Spanish Content Migration | 5/5 | Complete   | 2026-10-19 |
+| 3 | English + i18n | 4/4 | Complete   | 2026-10-19 |
 | 4 | Polish + Launch | 0/? | Not started | — |
