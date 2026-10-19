@@ -88,11 +88,11 @@ Phase: 03 (english-i18n) — COMPLETE (4/4 plans done)
 
 ### Open Blockers
 
-- ULPGC webmaster must confirm: `AllowOverride` status, deployment URL (root vs subdirectory), HTTPS enforcement, file permissions — required before finalizing `base:` in astro.config.mjs (Plan 02 Task 1 checkpoint)
+~~- ULPGC webmaster must confirm: `AllowOverride` status, deployment URL (root vs subdirectory), HTTPS enforcement, file permissions — required before finalizing `base:` in astro.config.mjs~~ — **RESOLVED (2026-10-19)**: site deploys to `/httpdocs` (domain root), `base:` stays unset, HTTPS+Let's Encrypt active, FTP to `217.116.2.102` as `micologiavet`
 
 ### Todos (carry forward)
 
-- Confirm deployment URL with ULPGC webmaster — Plan 02 Task 1 handles this as a human checkpoint
+- ~~Confirm deployment URL with ULPGC webmaster~~ — DONE: root deployment confirmed, no `base:` needed
 - ~~Audit source `.htm` files for FrontPage WebBot artifacts before extraction script is written (Plan 03)~~ — DONE: extraction script written and tested, FOUND-04 complete
 
 ---
