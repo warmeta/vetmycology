@@ -8,34 +8,30 @@ breadcrumb_parent: "Investigación"
 
 **Artículos interesantes**
 
-[I](inmunología%20de%20las%20micosis.pdf)[nmunología de las micosis.pdf](inmunología%20de%20las%20micosis.pdf)
+[Inmunología de las micosis](/docs/inmunologia-de-las-micosis.pdf)
 
-[antifungicos 22.pdf](antifungicos%2022.pdf)
+[Antifúngicos 22](/docs/antifungicos-22.pdf)
 
-[-Atlas-of-Fungal-Infection](-Atlas-of-Fungal-Infection.pdf)
+[Atlas of Fungal Infection](/docs/atlas-of-fungal-infection.pdf)
 
-[dermatofitosis equina](dermatofitosis%20equina.pdf)
+[Dermatofitosis equina](/docs/dermatofitosis-equina.pdf)
 
-[enfermedades fúngicas](enfermedades%20fúngicas.pdf)
+[Enfermedades fúngicas](/docs/enfermedades-fungicas.pdf)
 
-[enfermedades fúngicas](enfermedades%20fúngicas.pdf)
+[Esporotricosis](/docs/esporotricosis.pdf)
 
-[esporotricosis](esporotricosis.pdf)
+[Gentamicina inhibe a Malassezia](/docs/gentamicina-inhibe-a-malass.pdf)
 
-[gentamicina inhibe a malass](gentamicina%20inhibe%20a%20malass.pdf)
+[LUFENURON](/docs/lufenuron.pdf)
 
-[LUFENURON](LUFENURON.pdf)
+[Malassezias — dermatitis canina](/docs/malassezias-dermatitis-canina.pdf)
 
-[malassezias- dermatitis canina](malassezias-%20dermatitis%20canina.pdf)
+[Manual de Micología](/docs/manual-de-micologia.pdf)
 
-[Manual-de-Micologia](Manual-de-Micologia.pdf)
+[Manual para la identificación de hongos](/docs/manual-identificacion-hongos.pdf)
 
-[Manual-PARA-LA-IDENTIFICACION-DE-HONGOS[1]](Manual-PARA-LA-IDENTIFICACION-DE-HONGOS[1].pdf)
+[Rhinitis fúngica en gatos](/docs/rhinitis-fungica-cats.pdf)
 
-[rhinitis fungica in cats](rhinitis%20fungica%20in%20cats.pdf)
+[Rhinitis fúngica en perros](/docs/rhinitis-fungica-dog.pdf)
 
-[rhinitis fungica in dog](rhinitis%20fungica%20in%20dog.pdf)
-
-[dermatomicosis en iguanas por
-
-Chrysosporium sp.](Poster%20Iguana%20Cordoba%202008_chrisosporium_webcae.pdf)
+[Dermatomicosis en iguanas por Chrysosporium sp.](/docs/poster-iguana-cordoba-2008.pdf)
