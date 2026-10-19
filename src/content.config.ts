@@ -40,4 +40,37 @@ const recursos = defineCollection({
   schema: contentSchema,
 });
 
-export const collections = { micologia, patologias, investigacion, laboratorio, recursos };
+// EN content collections — parallel to ES collections, same schema, -en suffix base paths
+const micologiaEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/micologia-en' }),
+  schema: contentSchema,
+});
+
+const patologiasEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/patologias-en' }),
+  schema: contentSchema,
+});
+
+const investigacionEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/investigacion-en' }),
+  schema: contentSchema,
+});
+
+const laboratorioEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/laboratorio-en' }),
+  schema: contentSchema,
+});
+
+const recursosEn = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/recursos-en' }),
+  schema: contentSchema,
+});
+
+export const collections = {
+  micologia, patologias, investigacion, laboratorio, recursos,
+  'micologia-en': micologiaEn,
+  'patologias-en': patologiasEn,
+  'investigacion-en': investigacionEn,
+  'laboratorio-en': laboratorioEn,
+  'recursos-en': recursosEn,
+};
