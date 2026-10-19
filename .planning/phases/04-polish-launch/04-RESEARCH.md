@@ -840,22 +840,16 @@ const jsonLd = {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Does the ULPGC FTP server support FTPS (explicit TLS on port 21)?**
-   - What we know: FTP to `217.116.2.102` as `micologiavet` was used in prior phases for manual deploy
-   - What's unclear: Whether the server supports `STARTTLS` (explicit FTPS) or only plain FTP
-   - Recommendation: The workflow should start with `dry-run: true` and `protocol: ftps` + `security: loose`. If it fails with a TLS error, fall back to `protocol: ftp`. Document the result in STATE.md.
+   RESOLVED: Plans use `protocol: ftps` + `security: loose`. If FTPS is unavailable, the 04-04 human checkpoint includes explicit fallback instructions to switch to `protocol: ftp`. Document result in STATE.md after first deploy.
 
 2. **Is `package-lock.json` committed to the repo?**
-   - What we know: `npm ci` requires `package-lock.json` to be present
-   - What's unclear: The `.gitignore` state was not checked
-   - Recommendation: Verify with `git ls-files package-lock.json` before implementing the workflow; if not committed, commit it or switch to `npm install` in the workflow.
+   RESOLVED: Confirmed present — `npm ci` is safe to use (noted in 04-01 interfaces block).
 
 3. **Contrast ratio for `#52b788` on white**
-   - What we know: `#52b788` is the CSS accent color used for links (`a { color: var(--color-accent) }`)
-   - What's unclear: Exact contrast ratio; WCAG AA requires 4.5:1 for normal text
-   - Recommendation: Check with browser DevTools or https://webaim.org/resources/contrastchecker/ — if ratio < 4.5:1, darken to approximately `#2a7a5c` which achieves ~5.5:1 on white.
+   RESOLVED as task: 04-04 Task 1 verifies the ratio at execution time and darkens to `#2a7a5c` (~5.5:1) if the check fails. No blocking decision required before execution.
 
 ---
 
