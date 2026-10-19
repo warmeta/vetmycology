@@ -2,6 +2,10 @@
 // src/components/MobileNav.astro
 // Full-screen overlay nav with hidden checkbox + <details>/<summary> accordions (no JavaScript).
 // Source: 02-UI-SPEC.md Mobile nav CSS pattern (D-08) + RESEARCH.md Pattern 5
+// Phase 3: added lang prop, useTranslations, and locale-aware hrefs via getRelativeLocaleUrl.
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '../i18n/ui';
+
 interface NavChild {
   label: string;
   href: string;
@@ -13,46 +17,54 @@ interface NavGroup {
   children?: NavChild[];
 }
 
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const r = (path: string) => getRelativeLocaleUrl(lang, path);
+
 const navGroups: NavGroup[] = [
   {
-    label: 'Inicio',
-    href: '/',
+    label: t('nav.inicio'),
+    href: r(''),
   },
   {
-    label: 'Micología',
+    label: t('nav.micologia'),
     children: [
-      { label: 'Generalidades de los hongos', href: '/micologia/generalidades/' },
-      { label: 'Grupo de trabajo', href: '/micologia/grupo-de-trabajo/' },
-      { label: 'Colaboración con reptiles', href: '/micologia/colreptiles/' },
+      { label: t('nav.generalidades'), href: r('micologia/generalidades/') },
+      { label: t('nav.grupo'), href: r('micologia/grupo-de-trabajo/') },
+      { label: t('nav.colreptiles'), href: r('micologia/colreptiles/') },
     ],
   },
   {
-    label: 'Patologías',
+    label: t('nav.patologias'),
     children: [
-      { label: 'Levaduras', href: '/patologias/levaduras/' },
-      { label: 'Filamentosos', href: '/patologias/filamentosos/' },
-      { label: 'Dimórficos', href: '/patologias/dimorficos/' },
-      { label: 'Micosis peces', href: '/patologias/micosis-peces/' },
+      { label: t('nav.levaduras'), href: r('patologias/levaduras/') },
+      { label: t('nav.filamentosos'), href: r('patologias/filamentosos/') },
+      { label: t('nav.dimorficos'), href: r('patologias/dimorficos/') },
+      { label: t('nav.micosis-peces'), href: r('patologias/micosis-peces/') },
     ],
   },
   {
-    label: 'Investigación',
+    label: t('nav.investigacion'),
     children: [
-      { label: 'Artículos y congresos', href: '/investigacion/articulos-congresos/' },
-      { label: 'Artículos interesantes', href: '/investigacion/articulos-interesantes/' },
+      { label: t('nav.articulos-congresos'), href: r('investigacion/articulos-congresos/') },
+      { label: t('nav.articulos-interesantes'), href: r('investigacion/articulos-interesantes/') },
     ],
   },
   {
-    label: 'Laboratorio',
-    href: '/laboratorio/',
+    label: t('nav.laboratorio'),
+    href: r('laboratorio/'),
   },
   {
-    label: 'Recursos',
+    label: t('nav.recursos'),
     children: [
-      { label: 'Archivo de imágenes', href: '/recursos/archivo-imagenes/' },
-      { label: 'Links micología', href: '/recursos/links-micologia/' },
-      { label: 'Links revistas', href: '/recursos/links-revistas/' },
-      { label: 'Bibliografía', href: '/recursos/bibliografia/' },
+      { label: t('nav.archivo-imagenes'), href: r('recursos/archivo-imagenes/') },
+      { label: t('nav.links-micologia'), href: r('recursos/links-micologia/') },
+      { label: t('nav.links-revistas'), href: r('recursos/links-revistas/') },
+      { label: t('nav.bibliografia'), href: r('recursos/bibliografia/') },
     ],
   },
 ];
@@ -62,13 +74,13 @@ const navGroups: NavGroup[] = [
 <input type="checkbox" id="nav-toggle" class="nav-toggle-input" />
 
 <!-- Hamburger button label (clicking toggles checkbox) -->
-<label for="nav-toggle" class="nav-hamburger" aria-label="Abrir menú de navegación">
+<label for="nav-toggle" class="nav-hamburger" aria-label={t('nav.hamburger.open')}>
   ☰
 </label>
 
 <!-- Full-screen overlay — shown when #nav-toggle:checked via sibling combinator -->
 <div class="mobile-nav-overlay">
-  <label for="nav-toggle" class="nav-close" aria-label="Cerrar menú de navegación">
+  <label for="nav-toggle" class="nav-close" aria-label={t('nav.hamburger.close')}>
     ✕
   </label>
   <nav>

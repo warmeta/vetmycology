@@ -2,6 +2,10 @@
 // src/components/TopNav.astro
 // 6-cluster desktop nav with CSS :hover + :focus-within dropdowns (no JavaScript).
 // Source: 02-UI-SPEC.md Header + Navigation Contract (D-06, D-07) + RESEARCH.md Pattern 4
+// Phase 3: added lang prop, useTranslations, and locale-aware hrefs via getRelativeLocaleUrl.
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '../i18n/ui';
+
 interface NavChild {
   label: string;
   href: string;
@@ -13,51 +17,59 @@ interface NavGroup {
   children?: NavChild[];
 }
 
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
+const r = (path: string) => getRelativeLocaleUrl(lang, path);
+
 const navGroups: NavGroup[] = [
   {
-    label: 'Inicio',
-    href: '/',
+    label: t('nav.inicio'),
+    href: r(''),
   },
   {
-    label: 'Micología',
+    label: t('nav.micologia'),
     children: [
-      { label: 'Generalidades de los hongos', href: '/micologia/generalidades/' },
-      { label: 'Grupo de trabajo', href: '/micologia/grupo-de-trabajo/' },
-      { label: 'Colaboración con reptiles', href: '/micologia/colreptiles/' },
+      { label: t('nav.generalidades'), href: r('micologia/generalidades/') },
+      { label: t('nav.grupo'), href: r('micologia/grupo-de-trabajo/') },
+      { label: t('nav.colreptiles'), href: r('micologia/colreptiles/') },
     ],
   },
   {
-    label: 'Patologías',
+    label: t('nav.patologias'),
     children: [
-      { label: 'Levaduras', href: '/patologias/levaduras/' },
-      { label: 'Filamentosos', href: '/patologias/filamentosos/' },
-      { label: 'Dimórficos', href: '/patologias/dimorficos/' },
-      { label: 'Micosis peces', href: '/patologias/micosis-peces/' },
+      { label: t('nav.levaduras'), href: r('patologias/levaduras/') },
+      { label: t('nav.filamentosos'), href: r('patologias/filamentosos/') },
+      { label: t('nav.dimorficos'), href: r('patologias/dimorficos/') },
+      { label: t('nav.micosis-peces'), href: r('patologias/micosis-peces/') },
     ],
   },
   {
-    label: 'Investigación',
+    label: t('nav.investigacion'),
     children: [
-      { label: 'Artículos y congresos', href: '/investigacion/articulos-congresos/' },
-      { label: 'Artículos interesantes', href: '/investigacion/articulos-interesantes/' },
+      { label: t('nav.articulos-congresos'), href: r('investigacion/articulos-congresos/') },
+      { label: t('nav.articulos-interesantes'), href: r('investigacion/articulos-interesantes/') },
     ],
   },
   {
-    label: 'Laboratorio',
-    href: '/laboratorio/',
+    label: t('nav.laboratorio'),
+    href: r('laboratorio/'),
   },
   {
-    label: 'Recursos',
+    label: t('nav.recursos'),
     children: [
-      { label: 'Archivo de imágenes', href: '/recursos/archivo-imagenes/' },
-      { label: 'Links micología', href: '/recursos/links-micologia/' },
-      { label: 'Links revistas', href: '/recursos/links-revistas/' },
-      { label: 'Bibliografía', href: '/recursos/bibliografia/' },
+      { label: t('nav.archivo-imagenes'), href: r('recursos/archivo-imagenes/') },
+      { label: t('nav.links-micologia'), href: r('recursos/links-micologia/') },
+      { label: t('nav.links-revistas'), href: r('recursos/links-revistas/') },
+      { label: t('nav.bibliografia'), href: r('recursos/bibliografia/') },
     ],
   },
 ];
 ---
-<nav class="top-nav" aria-label="Navegación principal">
+<nav class="top-nav" aria-label={t('nav.label')}>
   <ul>
     {navGroups.map(group => (
       <li class="nav-group">
@@ -81,7 +93,7 @@ const navGroups: NavGroup[] = [
 </nav>
 
 <style>
-  .top-nav ul {
+  .top-nav > ul {
     list-style: none;
     margin: 0;
     padding: 0;

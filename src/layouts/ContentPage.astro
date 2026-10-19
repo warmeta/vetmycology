@@ -19,7 +19,7 @@ const { title, description, toc = false, tocItems = [], lang = 'es' } = Astro.pr
   <main id="main-content">
     <article class="content-page">
       <h1>{title}</h1>
-      {toc && tocItems.length > 0 && <TableOfContents items={tocItems} />}
+      {toc && tocItems.length > 0 && <TableOfContents items={tocItems} lang={lang} />}
       <slot />
     </article>
   </main>
