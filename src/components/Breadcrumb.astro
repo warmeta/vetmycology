@@ -1,0 +1,111 @@
+---
+// src/components/Breadcrumb.astro
+// Bilingual breadcrumb nav with BreadcrumbList JSON-LD in <head>.
+// JSON-LD is emitted via slot="head" — requires ContentPage to forward with <slot name="head" slot="head" />.
+// Source: 04-02-PLAN.md Task 2; 04-RESEARCH.md §2; WAI-ARIA APG breadcrumb pattern.
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  breadcrumbParent: string; // Spanish key matching parentMap, e.g. "Patologías"
+  title: string;            // current page title (leaf label)
+  lang: 'es' | 'en';
+}
+
+const { breadcrumbParent, title, lang } = Astro.props;
+const t = useTranslations(lang);
+
+type ParentEntry = { esPath: string; enPath: string; label: Record<string, string> };
+const parentMap: Record<string, ParentEntry> = {
+  'Micología': {
+    esPath: '/micologia/generalidades/',
+    enPath: '/en/micologia/generalidades/',
+    label: { es: 'Micología', en: 'Mycology' },
+  },
+  'Patologías': {
+    esPath: '/patologias/levaduras/',
+    enPath: '/en/patologias/levaduras/',
+    label: { es: 'Patologías', en: 'Pathologies' },
+  },
+  'Investigación': {
+    esPath: '/investigacion/articulos-congresos/',
+    enPath: '/en/investigacion/articulos-congresos/',
+    label: { es: 'Investigación', en: 'Research' },
+  },
+  'Laboratorio': {
+    esPath: '/laboratorio/',
+    enPath: '/en/laboratorio/',
+    label: { es: 'Laboratorio', en: 'Laboratory' },
+  },
+  'Recursos': {
+    esPath: '/recursos/archivo-imagenes/',
+    enPath: '/en/recursos/archivo-imagenes/',
+    label: { es: 'Recursos', en: 'Resources' },
+  },
+};
+
+const parent = parentMap[breadcrumbParent];
+const parentHref = lang === 'en' ? parent?.enPath : parent?.esPath;
+const parentLabel = parent?.label[lang] ?? breadcrumbParent;
+const homeHref = lang === 'en' ? '/en/' : '/';
+const homeLabel = t('breadcrumb.home');
+
+// JSON-LD — absolute URLs required (Google spec)
+const siteOrigin = Astro.site?.origin ?? 'https://micologiaveterinaria.ulpgc.es';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': homeLabel, 'item': `${siteOrigin}${homeHref}` },
+    { '@type': 'ListItem', 'position': 2, 'name': parentLabel, 'item': `${siteOrigin}${parentHref}` },
+    { '@type': 'ListItem', 'position': 3, 'name': title },
+  ],
+};
+---
+<!-- JSON-LD in <head> — slot="head" routes this to BaseLayout via ContentPage forwarding slot -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+<!-- Visible breadcrumb nav — WAI-ARIA APG breadcrumb pattern -->
+<nav aria-label={t('breadcrumb.aria-label')} class="breadcrumb">
+  <ol>
+    <li><a href={homeHref}>{homeLabel}</a></li>
+    <li aria-hidden="true" class="sep">›</li>
+    <li><a href={parentHref}>{parentLabel}</a></li>
+    <li aria-hidden="true" class="sep">›</li>
+    <li><span aria-current="page">{title}</span></li>
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb {
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    opacity: 0.65;
+    margin-bottom: var(--space-sm);
+  }
+  .breadcrumb ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+  }
+  .breadcrumb li {
+    display: inline;
+  }
+  .breadcrumb .sep {
+    margin: 0 var(--space-xs);
+  }
+  .breadcrumb a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  .breadcrumb [aria-current="page"] {
+    font-weight: 400;
+  }
+</style>
