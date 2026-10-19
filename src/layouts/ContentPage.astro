@@ -4,6 +4,7 @@
 // Source: 02-UI-SPEC.md ContentPage Layout Contract + RESEARCH.md Pitfall 3 (:global() for prose)
 import BaseLayout from './BaseLayout.astro';
 import TableOfContents from '../components/TableOfContents.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
 
 interface Props {
   title: string;
@@ -11,13 +12,16 @@ interface Props {
   toc?: boolean;
   tocItems?: Array<{ id: string; label: string }>;
   lang?: 'es' | 'en';
+  breadcrumbParent?: string;
 }
 
-const { title, description, toc = false, tocItems = [], lang = 'es' } = Astro.props;
+const { title, description, toc = false, tocItems = [], lang = 'es', breadcrumbParent } = Astro.props;
 ---
 <BaseLayout title={title} description={description} lang={lang}>
-  <main id="main-content">
+  <slot name="head" slot="head" />
+  <main id="main-content" tabindex="-1">
     <article class="content-page">
+      {breadcrumbParent && <Breadcrumb breadcrumbParent={breadcrumbParent} title={title} lang={lang} />}
       <h1>{title}</h1>
       {toc && tocItems.length > 0 && <TableOfContents items={tocItems} lang={lang} />}
       <slot />
