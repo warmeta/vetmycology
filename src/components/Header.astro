@@ -2,20 +2,30 @@
 // src/components/Header.astro
 // Sticky header with logo-left/nav-right (desktop), logo+hamburger (mobile), skip link.
 // Source: 02-UI-SPEC.md Header + Navigation Contract (D-09) + Copywriting Contract
+// Phase 3: added lang prop, useTranslations, LangSwitcher, locale-aware wordmark href.
 import TopNav from './TopNav.astro';
 import MobileNav from './MobileNav.astro';
+import LangSwitcher from './LangSwitcher.astro';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!-- Skip link — first child; visually hidden until focused (WCAG 2.4.1) -->
-<a href="#main-content" class="skip-link">Ir al contenido principal</a>
+<a href="#main-content" class="skip-link">{t('skip.link')}</a>
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="site-wordmark">Grupo de Micología Veterinaria · ULPGC</a>
+    <a href={lang === 'en' ? '/en/' : '/'} class="site-wordmark">Grupo de Micología Veterinaria · ULPGC</a>
     <div class="header-right">
-      <TopNav />
-      <MobileNav />
-      <span class="lang-switcher" aria-label="Idioma: Español">ES</span>
+      <TopNav lang={lang} />
+      <MobileNav lang={lang} />
+      <LangSwitcher />
     </div>
   </div>
 </header>

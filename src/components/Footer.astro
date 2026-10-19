@@ -5,6 +5,15 @@
 // Note: Logo image files (ulpgc.png, iusa.png) must be copied from ~/Downloads/backup/
 //       (LOGO.jpg → ulpgc.png, iusalogodoctorado2012.jpg → iusa.png) — Plan 05 Task 1.
 //       In Phase 2 Wave 1 the images may 404; alt text degrades gracefully.
+// Phase 3: added lang prop and useTranslations for affiliation and contact label.
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang?: 'es' | 'en';
+}
+
+const { lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
 <footer class="site-footer">
   <div class="footer-inner">
@@ -12,9 +21,9 @@
       <img src="/images/logos/ulpgc.jpg" alt="Universidad de Las Palmas de Gran Canaria" />
       <img src="/images/logos/iusa.jpg" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
     </div>
-    <p class="footer-affiliation">Grupo de Micología Veterinaria · Facultad de Veterinaria · ULPGC</p>
+    <p class="footer-affiliation">{t('footer.affiliation')}</p>
     <p class="footer-contact">
-      <a href="mailto:begona.acosta@ulpgc.es">Contacto: begona.acosta@ulpgc.es</a>
+      <a href="mailto:begona.acosta@ulpgc.es">{t('footer.contact')}: begona.acosta@ulpgc.es</a>
     </p>
   </div>
 </footer>

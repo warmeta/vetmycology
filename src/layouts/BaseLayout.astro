@@ -2,9 +2,11 @@
 // src/layouts/BaseLayout.astro
 // HTML shell with Google Fonts preconnect+stylesheet, global.css import, Header + slot + Footer.
 // Source: 02-UI-SPEC.md BaseLayout Component Contract + RESEARCH.md Pattern 3
+// Phase 3: added hreflang link tags + lang prop passed to Header and Footer.
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 
 interface Props {
   title: string;
@@ -13,6 +15,14 @@ interface Props {
 }
 
 const { title, description, lang = 'es' } = Astro.props;
+
+// Strip /en/ prefix to get locale-neutral path for hreflang URL generation.
+// Pitfall 7: getAbsoluteLocaleUrl requires site in astro.config.mjs — already set.
+const rawPath = Astro.url.pathname;
+const cleanPath = rawPath.replace(/^\/en\//, '/').replace(/^\//, '') || '';
+
+const esHref = getAbsoluteLocaleUrl('es', cleanPath);
+const enHref = getAbsoluteLocaleUrl('en', cleanPath);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -27,11 +37,14 @@ const { title, description, lang = 'es' } = Astro.props;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Source+Serif+4:wght@700&display=swap"
     />
+    <link rel="alternate" hreflang="es" href={esHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={esHref} />
     <slot name="head" />
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <slot />
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

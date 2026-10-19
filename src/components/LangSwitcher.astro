@@ -1,0 +1,35 @@
+---
+// src/components/LangSwitcher.astro
+// Renders ES | EN switcher with current locale highlighted and the other as a link.
+// Source: 03-RESEARCH.md Pattern 2 (Language Switcher Component)
+// Pitfall 1: Astro.currentLocale is undefined on root page with prefixDefaultLocale:false
+// Pitfall 3: cleanPath empty string for root page — getRelativeLocaleUrl handles correctly
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale ?? 'es';
+
+// Strip the locale prefix to get the clean locale-neutral path.
+// With prefixDefaultLocale: false:
+//   ES page: Astro.url.pathname = '/micologia/generalidades/' → clean = 'micologia/generalidades/'
+//   EN page: Astro.url.pathname = '/en/micologia/generalidades/' → strip '/en/' → clean = 'micologia/generalidades/'
+//   Root page: Astro.url.pathname = '/' → clean = '' → getRelativeLocaleUrl returns '/' correctly
+const rawPath = Astro.url.pathname;
+const cleanPath = rawPath.replace(/^\/en\//, '/').replace(/^\//, '') || '';
+
+const esUrl = getRelativeLocaleUrl('es', cleanPath);
+const enUrl = getRelativeLocaleUrl('en', cleanPath);
+---
+
+<div class="lang-switcher">
+  {currentLocale === 'es' ? (
+    <span aria-current="page" aria-label="Idioma: Español">ES</span>
+  ) : (
+    <a href={esUrl} aria-label="Cambiar a español">ES</a>
+  )}
+  <span aria-hidden="true">|</span>
+  {currentLocale === 'en' ? (
+    <span aria-current="page" aria-label="Language: English">EN</span>
+  ) : (
+    <a href={enUrl} aria-label="Switch to English">EN</a>
+  )}
+</div>

@@ -2,14 +2,19 @@
 // src/components/TableOfContents.astro
 // <nav aria-label="En esta página"> bordered box, renders ol of anchor links from items prop.
 // Source: 02-UI-SPEC.md TableOfContents Component Contract
+// Phase 3: added lang prop and useTranslations for TOC label and aria-label.
+import { useTranslations } from '../i18n/ui';
+
 interface Props {
   items: Array<{ id: string; label: string }>;
+  lang?: 'es' | 'en';
 }
 
-const { items } = Astro.props;
+const { items, lang = 'es' } = Astro.props;
+const t = useTranslations(lang);
 ---
-<nav aria-label="En esta página" class="toc">
-  <p class="toc-title">En esta página</p>
+<nav aria-label={t('toc.nav-label')} class="toc">
+  <p class="toc-title">{t('toc.label')}</p>
   <ol>
     {items.map(item => (
       <li>
