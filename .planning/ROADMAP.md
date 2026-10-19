@@ -11,7 +11,7 @@
 - [x] **Phase 1: Foundation + Pipeline** — Astro scaffolded, i18n locked, test page live on ULPGC server (completed 2026-10-18)
 - [x] **Phase 2: Spanish Content Migration** — All 14 sections live in Spanish with full layout and media (completed 2026-10-19)
 - [x] **Phase 3: English + i18n** — Full bilingual site with language switcher and hreflang (completed 2026-10-19)
-- [ ] **Phase 4: Polish + Launch** — Accessibility audit, breadcrumbs, production smoke-test
+- [x] **Phase 4: Polish + Launch** — Accessibility audit, breadcrumbs, production smoke-test (completed 2026-10-19)
 
 ---
 
@@ -113,7 +113,7 @@ Plans:
   2. Every page displays a breadcrumb trail in the page locale (e.g., `Inicio > Patologías > Levaduras`) and the breadcrumb renders `BreadcrumbList` structured data in the page source
   3. A full manual smoke-test across all 14 sections in both ES and EN on the live ULPGC server returns no broken links, no encoding artifacts, and no 404s
 
-**Plans:** 2/4 plans executed
+**Plans:** 4/4 plans complete
 Plans:
 **Wave 1** *(independent — no code changes, CI/CD only)*
 
@@ -125,11 +125,11 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2)*
 
-- [ ] 04-03-PLAN.md — Populate breadcrumb_parent in 26 content markdown files + fix laboratorio heading hierarchy + extend verify-build.mjs with breadcrumb assertions (I18N-05, FOUND-05)
+- [x] 04-03-PLAN.md — Populate breadcrumb_parent in 26 content markdown files + fix laboratorio heading hierarchy + extend verify-build.mjs with breadcrumb assertions (I18N-05, FOUND-05)
 
 **Wave 4** *(blocked on Waves 2 and 3)*
 
-- [ ] 04-04-PLAN.md — Contrast audit + WCAG structural checklist + production deploy smoke test (FOUND-05, I18N-05)
+- [x] 04-04-PLAN.md — Contrast audit + WCAG structural checklist + production deploy smoke test (FOUND-05, I18N-05)
 
 ---
 
@@ -140,4 +140,4 @@ Plans:
 | 1 | Foundation + Pipeline | 3/3 | Complete   | 2026-10-18 |
 | 2 | Spanish Content Migration | 5/5 | Complete   | 2026-10-19 |
 | 3 | English + i18n | 4/4 | Complete   | 2026-10-19 |
-| 4 | Polish + Launch | 2/4 | In Progress|  |
+| 4 | Polish + Launch | 4/4 | Complete   | 2026-10-19 |
