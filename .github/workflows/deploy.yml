@@ -1,0 +1,61 @@
+# Deploy workflow for VetMyc (Veterinary Mycology Group — ULPGC)
+#
+# How this works:
+#   1. Build: checkout → Node 22 → npm ci → npm run build
+#   2. Stage: assemble deploy-staging/ with public/ (built site) + .htaccess (security)
+#   3. Push:  JamesIves/github-pages-deploy-action force-pushes deploy-staging/ contents
+#             to the `prod` branch
+#
+# The `prod` branch is a deployment-only branch.
+# NEVER edit it manually — it is force-pushed by CI on every push to main.
+#
+# Plesk Git extension (one-time manual setup required — see SUMMARY.md):
+#   - Polls / receives webhook on `prod` branch push
+#   - Clones prod into /httpdocs/ on the ULPGC server
+#   - Plesk document root is /httpdocs/public/ — the actual served files
+#   - /httpdocs/.git/ is never under the document root
+#
+# permissions: contents: write is required so GITHUB_TOKEN can push to the prod branch.
+# No FTP credentials, no server IP, no server secrets appear in this file.
+
+name: Deploy to ULPGC
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # required for JamesIves to push to prod branch
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'   # package.json requires >=22.12.0
+          cache: 'npm'
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Prepare deployment structure
+        run: |
+          mkdir -p deploy-staging/public
+          cp -r dist/. deploy-staging/public/
+          printf 'RedirectMatch 404 /\\.git\n' > deploy-staging/.htaccess
+
+      - name: Push to prod branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: prod
+          folder: deploy-staging
+          clean: true
+          commit-message: "deploy: ${{ github.sha }}"
