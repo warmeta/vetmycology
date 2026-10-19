@@ -21,7 +21,9 @@ const t = useTranslations(lang);
 
 <header class="site-header">
   <div class="header-inner">
-    <a href={lang === 'en' ? '/en/' : '/'} class="site-wordmark">Grupo de Micología Veterinaria · ULPGC</a>
+    <a href={lang === 'en' ? '/en/' : '/'} class="site-logo">
+      <img src="/images/logos/ulpgc.png" alt="Universidad de Las Palmas de Gran Canaria" />
+    </a>
     <div class="header-right">
       <TopNav lang={lang} />
       <MobileNav lang={lang} />
@@ -73,15 +75,16 @@ const t = useTranslations(lang);
     margin: 0 auto;
   }
 
-  .site-wordmark {
-    color: var(--color-nav-text);
+  .site-logo {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    font-family: var(--font-body);
-    font-size: var(--font-size-sm);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 60%;
+    flex-shrink: 0;
+  }
+
+  .site-logo img {
+    height: 36px;
+    width: auto;
   }
 
   .header-right {
