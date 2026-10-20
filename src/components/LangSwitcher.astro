@@ -33,3 +33,31 @@ const enUrl = getRelativeLocaleUrl('en', cleanPath);
     <a href={enUrl} aria-label="Switch to English">EN</a>
   )}
 </div>
+
+<style>
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-body);
+  }
+
+  .lang-switcher a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .lang-switcher a:visited {
+    color: #ffffff;
+  }
+
+  .lang-switcher a:hover {
+    opacity: 0.8;
+  }
+
+  .lang-switcher span {
+    color: rgba(255, 255, 255, 0.5);
+  }
+</style>
