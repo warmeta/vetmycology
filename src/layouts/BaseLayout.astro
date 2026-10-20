@@ -16,28 +16,46 @@ interface Props {
 
 const { title, description, lang = 'es' } = Astro.props;
 
-// Strip /en/ prefix to get locale-neutral path for hreflang URL generation.
-// Pitfall 7: getAbsoluteLocaleUrl requires site in astro.config.mjs — already set.
 const rawPath = Astro.url.pathname;
 const cleanPath = rawPath.replace(/^\/en\//, '/').replace(/^\//, '') || '';
 
 const esHref = getAbsoluteLocaleUrl('es', cleanPath);
 const enHref = getAbsoluteLocaleUrl('en', cleanPath);
+const canonicalUrl = Astro.url.href;
+const ogLocale = lang === 'en' ? 'en_US' : 'es_ES';
+const siteName = 'Grupo de Micología Veterinaria · ULPGC';
+const ogImage = `${Astro.site}images/logos/ulpgc_color.png`;
 ---
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:image" content={ogImage} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Source+Serif+4:wght@700&display=swap"
     />
+    <!-- hreflang -->
     <link rel="alternate" hreflang="es" href={esHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={esHref} />
