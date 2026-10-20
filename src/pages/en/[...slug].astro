@@ -1,0 +1,25 @@
+---
+// Catch-all dynamic route for EN content pages served from Directus.
+import ContentPage from '../../layouts/ContentPage.astro';
+import { getPage } from '../../lib/directus';
+import { extractTocItems, injectHeadingIds } from '../../lib/toc';
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect('/en/');
+
+const page = await getPage(slug as string, 'en');
+if (!page) return new Response(null, { status: 404 });
+
+const bodyWithIds = page.toc ? injectHeadingIds(page.body) : page.body;
+const tocItems = page.toc ? extractTocItems(bodyWithIds) : [];
+---
+
+<ContentPage
+  title={page.title}
+  description={page.description}
+  toc={page.toc}
+  tocItems={tocItems}
+  lang="en"
+  breadcrumbParent={page.breadcrumb_parent}
+  body={bodyWithIds}
+/>

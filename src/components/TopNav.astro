@@ -1,81 +1,30 @@
 ---
 // src/components/TopNav.astro
 // 6-cluster desktop nav with CSS :hover + :focus-within dropdowns (no JavaScript).
-// Source: 02-UI-SPEC.md Header + Navigation Contract (D-06, D-07) + RESEARCH.md Pattern 4
-// Phase 3: added lang prop, useTranslations, and locale-aware hrefs via getRelativeLocaleUrl.
-import { getRelativeLocaleUrl } from 'astro:i18n';
+// navItems is fetched from Directus in BaseLayout and passed down.
+// Falls back to the hardcoded DEFAULT_NAV when Directus has no items.
 import { useTranslations } from '../i18n/ui';
-
-interface NavChild {
-  label: string;
-  href: string;
-}
-
-interface NavGroup {
-  label: string;
-  href?: string;
-  children?: NavChild[];
-}
+import type { ProcessedNavItem } from '../lib/directus';
+import { DEFAULT_NAV } from '../lib/defaultNav';
 
 interface Props {
   lang?: 'es' | 'en';
+  navItems?: ProcessedNavItem[];
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = 'es', navItems } = Astro.props;
 const t = useTranslations(lang);
-const r = (path: string) => getRelativeLocaleUrl(lang, path);
-
-const navGroups: NavGroup[] = [
-  {
-    label: t('nav.inicio'),
-    href: r(''),
-  },
-  {
-    label: t('nav.micologia'),
-    children: [
-      { label: t('nav.generalidades'), href: r('micologia/generalidades/') },
-      { label: t('nav.grupo'), href: r('micologia/grupo-de-trabajo/') },
-      { label: t('nav.colreptiles'), href: r('micologia/colreptiles/') },
-    ],
-  },
-  {
-    label: t('nav.patologias'),
-    children: [
-      { label: t('nav.levaduras'), href: r('patologias/levaduras/') },
-      { label: t('nav.filamentosos'), href: r('patologias/filamentosos/') },
-      { label: t('nav.dimorficos'), href: r('patologias/dimorficos/') },
-      { label: t('nav.micosis-peces'), href: r('patologias/micosis-peces/') },
-    ],
-  },
-  {
-    label: t('nav.investigacion'),
-    children: [
-      { label: t('nav.articulos-congresos'), href: r('investigacion/articulos-congresos/') },
-      { label: t('nav.articulos-interesantes'), href: r('investigacion/articulos-interesantes/') },
-    ],
-  },
-  {
-    label: t('nav.laboratorio'),
-    href: r('laboratorio/'),
-  },
-  {
-    label: t('nav.recursos'),
-    children: [
-      { label: t('nav.archivo-imagenes'), href: r('recursos/archivo-imagenes/') },
-      { label: t('nav.links-micologia'), href: r('recursos/links-micologia/') },
-      { label: t('nav.links-revistas'), href: r('recursos/links-revistas/') },
-      { label: t('nav.bibliografia'), href: r('recursos/bibliografia/') },
-    ],
-  },
-];
+const items: ProcessedNavItem[] = navItems?.length ? navItems : DEFAULT_NAV[lang];
 ---
 <nav class="top-nav" aria-label={t('nav.label')}>
   <ul>
-    {navGroups.map(group => (
+    {items.map(group => (
       <li class="nav-group">
-        {group.children ? (
+        {group.children?.length ? (
           <>
-            <button type="button" class="nav-group-label" aria-haspopup="true">{group.label} <span aria-hidden="true" class="dropdown-arrow">▾</span></button>
+            <button type="button" class="nav-group-label" aria-haspopup="true">
+              {group.label} <span aria-hidden="true" class="dropdown-arrow">▾</span>
+            </button>
             <ul class="nav-dropdown">
               {group.children.map(child => (
                 <li>
@@ -119,7 +68,6 @@ const navGroups: NavGroup[] = [
     padding: 0;
   }
 
-  /* Keyboard accessible: :focus-within catches Tab into dropdown links */
   .nav-group:hover .nav-dropdown,
   .nav-group:focus-within .nav-dropdown {
     display: block;
@@ -175,7 +123,6 @@ const navGroups: NavGroup[] = [
     background: rgba(255, 255, 255, 0.1);
   }
 
-  /* Hide on mobile — MobileNav handles mobile viewport */
   @media (max-width: 1023px) {
     .top-nav {
       display: none;

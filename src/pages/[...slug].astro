@@ -1,0 +1,26 @@
+---
+// Catch-all dynamic route for ES content pages served from Directus.
+// Specific routes under src/pages/ take priority over this wildcard in Astro's router.
+import ContentPage from '../layouts/ContentPage.astro';
+import { getPage } from '../lib/directus';
+import { extractTocItems, injectHeadingIds } from '../lib/toc';
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect('/');
+
+const page = await getPage(slug as string, 'es');
+if (!page) return new Response(null, { status: 404 });
+
+const bodyWithIds = page.toc ? injectHeadingIds(page.body) : page.body;
+const tocItems = page.toc ? extractTocItems(bodyWithIds) : [];
+---
+
+<ContentPage
+  title={page.title}
+  description={page.description}
+  toc={page.toc}
+  tocItems={tocItems}
+  lang="es"
+  breadcrumbParent={page.breadcrumb_parent}
+  body={bodyWithIds}
+/>

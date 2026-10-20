@@ -7,13 +7,19 @@
 //       In Phase 2 Wave 1 the images may 404; alt text degrades gracefully.
 // Phase 3: added lang prop and useTranslations for affiliation and contact label.
 import { useTranslations } from '../i18n/ui';
+import type { SiteSettings } from '../lib/directus';
 
 interface Props {
   lang?: 'es' | 'en';
+  settings?: SiteSettings | null;
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = 'es', settings } = Astro.props;
 const t = useTranslations(lang);
+const affiliation = settings
+  ? (lang === 'en' ? settings.footer_affiliation_en : settings.footer_affiliation_es)
+  : t('footer.affiliation');
+const contactEmail = settings?.contact_email ?? 'begona.acosta@ulpgc.es';
 ---
 <footer class="site-footer">
   <div class="footer-inner">
@@ -21,9 +27,9 @@ const t = useTranslations(lang);
       <img src="/images/logos/ulpgc_color.png" alt="Universidad de Las Palmas de Gran Canaria" />
       <img src="/images/logos/iusa.png" alt="Instituto Universitario de Sanidad Animal y Seguridad Alimentaria" />
     </div>
-    <p class="footer-affiliation">{t('footer.affiliation')}</p>
+    <p class="footer-affiliation">{affiliation}</p>
     <p class="footer-contact">
-      <a href="mailto:begona.acosta@ulpgc.es">{t('footer.contact')}: begona.acosta@ulpgc.es</a>
+      <a href={`mailto:${contactEmail}`}>{t('footer.contact')}: {contactEmail}</a>
     </p>
   </div>
 </footer>

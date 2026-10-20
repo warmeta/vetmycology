@@ -1,91 +1,35 @@
 ---
 // src/components/MobileNav.astro
 // Full-screen overlay nav with hidden checkbox + <details>/<summary> accordions (no JavaScript).
-// Source: 02-UI-SPEC.md Mobile nav CSS pattern (D-08) + RESEARCH.md Pattern 5
-// Phase 3: added lang prop, useTranslations, and locale-aware hrefs via getRelativeLocaleUrl.
-import { getRelativeLocaleUrl } from 'astro:i18n';
+// navItems is fetched from Directus in BaseLayout and passed down.
+// Falls back to the hardcoded DEFAULT_NAV when Directus has no items.
 import { useTranslations } from '../i18n/ui';
-
-interface NavChild {
-  label: string;
-  href: string;
-}
-
-interface NavGroup {
-  label: string;
-  href?: string;
-  children?: NavChild[];
-}
+import type { ProcessedNavItem } from '../lib/directus';
+import { DEFAULT_NAV } from '../lib/defaultNav';
 
 interface Props {
   lang?: 'es' | 'en';
+  navItems?: ProcessedNavItem[];
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = 'es', navItems } = Astro.props;
 const t = useTranslations(lang);
-const r = (path: string) => getRelativeLocaleUrl(lang, path);
-
-const navGroups: NavGroup[] = [
-  {
-    label: t('nav.inicio'),
-    href: r(''),
-  },
-  {
-    label: t('nav.micologia'),
-    children: [
-      { label: t('nav.generalidades'), href: r('micologia/generalidades/') },
-      { label: t('nav.grupo'), href: r('micologia/grupo-de-trabajo/') },
-      { label: t('nav.colreptiles'), href: r('micologia/colreptiles/') },
-    ],
-  },
-  {
-    label: t('nav.patologias'),
-    children: [
-      { label: t('nav.levaduras'), href: r('patologias/levaduras/') },
-      { label: t('nav.filamentosos'), href: r('patologias/filamentosos/') },
-      { label: t('nav.dimorficos'), href: r('patologias/dimorficos/') },
-      { label: t('nav.micosis-peces'), href: r('patologias/micosis-peces/') },
-    ],
-  },
-  {
-    label: t('nav.investigacion'),
-    children: [
-      { label: t('nav.articulos-congresos'), href: r('investigacion/articulos-congresos/') },
-      { label: t('nav.articulos-interesantes'), href: r('investigacion/articulos-interesantes/') },
-    ],
-  },
-  {
-    label: t('nav.laboratorio'),
-    href: r('laboratorio/'),
-  },
-  {
-    label: t('nav.recursos'),
-    children: [
-      { label: t('nav.archivo-imagenes'), href: r('recursos/archivo-imagenes/') },
-      { label: t('nav.links-micologia'), href: r('recursos/links-micologia/') },
-      { label: t('nav.links-revistas'), href: r('recursos/links-revistas/') },
-      { label: t('nav.bibliografia'), href: r('recursos/bibliografia/') },
-    ],
-  },
-];
+const items: ProcessedNavItem[] = navItems?.length ? navItems : DEFAULT_NAV[lang];
 ---
 
-<!-- Hidden checkbox — the toggle state lives in the DOM, no JS needed -->
 <input type="checkbox" id="nav-toggle" class="nav-toggle-input" />
 
-<!-- Hamburger button label (clicking toggles checkbox) -->
 <label for="nav-toggle" class="nav-hamburger" aria-label={t('nav.hamburger.open')}>
   ☰
 </label>
 
-<!-- Full-screen overlay — shown when #nav-toggle:checked via sibling combinator -->
 <div class="mobile-nav-overlay">
   <label for="nav-toggle" class="nav-close" aria-label={t('nav.hamburger.close')}>
     ✕
   </label>
   <nav>
-    {navGroups.map(group => (
-      group.children ? (
+    {items.map(group => (
+      group.children?.length ? (
         <details>
           <summary>{group.label}</summary>
           <ul>
@@ -102,10 +46,6 @@ const navGroups: NavGroup[] = [
 </div>
 
 <style>
-  /* Known limitation (Pitfall 5): :checked persists through viewport resize.
-     Edge-case only; Phase 4 may add a JS reset if needed. */
-
-  /* Hide the actual checkbox — state is managed by the browser */
   .nav-toggle-input {
     display: none;
   }
@@ -133,7 +73,6 @@ const navGroups: NavGroup[] = [
     overflow-y: auto;
   }
 
-  /* Show overlay when checkbox is checked */
   #nav-toggle:checked ~ .mobile-nav-overlay {
     display: flex;
   }
@@ -160,13 +99,12 @@ const navGroups: NavGroup[] = [
   .mobile-nav-overlay a {
     color: var(--color-nav-text);
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
     padding: var(--space-sm) 0;
     min-height: 44px;
     font-family: var(--font-body);
     font-size: var(--font-size-body);
-    display: flex;
-    align-items: center;
   }
 
   .mobile-nav-overlay details {
@@ -195,7 +133,6 @@ const navGroups: NavGroup[] = [
     min-height: 44px;
   }
 
-  /* Desktop: hide hamburger; mobile overlay forced hidden even if :checked persists */
   @media (min-width: 1024px) {
     .nav-hamburger {
       display: none !important;
@@ -205,7 +142,6 @@ const navGroups: NavGroup[] = [
     }
   }
 
-  /* Mobile: show hamburger */
   @media (max-width: 1023px) {
     .nav-hamburger {
       display: flex;

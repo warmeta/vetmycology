@@ -14,9 +14,11 @@ interface Props {
   tocItems?: Array<{ id: string; label: string }>;
   lang?: 'es' | 'en';
   breadcrumbParent?: string;
+  // Optional pre-rendered HTML body from Directus. When set, replaces the <slot />.
+  body?: string;
 }
 
-const { title, description, toc = false, tocItems = [], lang = 'es', breadcrumbParent } = Astro.props;
+const { title, description, toc = false, tocItems = [], lang = 'es', breadcrumbParent, body } = Astro.props;
 const t = useTranslations(lang);
 
 // Build BreadcrumbList JSON-LD here so it can be injected into <head> via slot forwarding.
@@ -56,7 +58,7 @@ if (breadcrumbParent) {
       {breadcrumbParent && <Breadcrumb breadcrumbParent={breadcrumbParent} title={title} lang={lang} />}
       <h1>{title}</h1>
       {toc && tocItems.length > 0 && <TableOfContents items={tocItems} lang={lang} />}
-      <slot />
+      {body ? <div class="prose" set:html={body} /> : <slot />}
     </article>
   </main>
 </BaseLayout>

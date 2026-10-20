@@ -7,12 +7,14 @@ import TopNav from './TopNav.astro';
 import MobileNav from './MobileNav.astro';
 import LangSwitcher from './LangSwitcher.astro';
 import { useTranslations } from '../i18n/ui';
+import type { ProcessedNavItem } from '../lib/directus';
 
 interface Props {
   lang?: 'es' | 'en';
+  navItems?: ProcessedNavItem[];
 }
 
-const { lang = 'es' } = Astro.props;
+const { lang = 'es', navItems } = Astro.props;
 const t = useTranslations(lang);
 ---
 
@@ -25,8 +27,8 @@ const t = useTranslations(lang);
       <img src="/images/logos/ulpgc.png" alt="Universidad de Las Palmas de Gran Canaria" />
     </a>
     <div class="header-right">
-      <TopNav lang={lang} />
-      <MobileNav lang={lang} />
+      <TopNav lang={lang} navItems={navItems} />
+      <MobileNav lang={lang} navItems={navItems} />
       <LangSwitcher />
     </div>
   </div>
