@@ -97,5 +97,23 @@ const t = useTranslations(lang);
     color: var(--color-nav-text);
     font-size: var(--font-size-sm);
     font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .lang-switcher a {
+    color: var(--color-nav-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .lang-switcher a:hover {
+    opacity: 0.8;
+  }
+
+  .lang-switcher span[aria-current] {
+    opacity: 0.5;
+    cursor: default;
   }
 </style>
