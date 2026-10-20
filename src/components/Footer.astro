@@ -50,6 +50,12 @@ const t = useTranslations(lang);
     margin-bottom: var(--space-md);
   }
 
+  @media (max-width: 767px) {
+    .footer-logos {
+      flex-direction: column;
+    }
+  }
+
   .footer-logos img {
     max-height: 60px;
     width: auto;
